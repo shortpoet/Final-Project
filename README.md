@@ -1,17 +1,18 @@
 # Final-Project
 
-## First steps:
+## First steps
 
-### Narrowing down ideas:
+### Narrowing down ideas
 
 #### ML Voice Generator
-    *CS231n  Lecture 10 - Recurrent Neural Networks, Image Captioning, LSTM
-        *https://www.youtube.com/watch?v=iX5V1WpxxkY
-    *Speech Synthesis Techniques using Deep Neural Networks
+
+    * CS231n  Lecture 10 - Recurrent Neural Networks, Image Captioning, LSTM
+        * https://www.youtube.com/watch?v=iX5V1WpxxkY
+    * Speech Synthesis Techniques using Deep Neural Networks
         *https://medium.com/@saxenauts/speech-synthesis-techniques-using-deep-neural-networks-38699e943861
 
-
 #### National Park Service Recommender & Dashboard
+
     * An unofficial repository of National Park Service data
         * https://nationalparkservice.github.io/data/
         * https://github.com/nationalparkservice/data
