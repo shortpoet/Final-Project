@@ -37,6 +37,12 @@
 * Audio repositories
     * https://www.voiptroubleshooter.com/open_speech/american.html
     * https://www.americanrhetoric.com/barackobamaspeeches.htm
+* Transfer Learning
+    * Using a known, well-trained model to explore a slightly different question/dataset
+    * Useful from a business perspective because it uses existing resources
+    * OpenAI
+        * https://openai.com/resources/
+
 #### National Park Service Recommender & Dashboard
 
 * An unofficial repository of National Park Service data
