@@ -1,5 +1,5 @@
 
-endpoint = '../mr-boston-flattened.csv'
+endpoint = 'cocktails'
 
 
 function drawTable(endpoint) {

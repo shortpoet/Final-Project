@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, Markup, url_for, jsonify
 from flask_pymongo import PyMongo
-from bson import json_util
 import json
 import re
 from datetime import datetime as dt
@@ -9,11 +8,11 @@ app = Flask(__name__)
 
 
 # Use flask_pymongo to set up mongo connection
-app.config["MONGO_URI"] = "mongodb://localhost:27017/asmr_youtube"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/cocktail_db"
 mongo = PyMongo(app)
 
 # Or set inline
-# mongo = PyMongo(app, uri="mongodb://localhost:27017/social_blade")
+# mongo = PyMongo(app, uri="mongodb://localhost:27017/cocktail_db")
 
 
 
@@ -24,16 +23,14 @@ def home():
     return render_template("index.html")
 
 @app.route("/cocktails")
-def asmr_channels():
+def cocktails():
 
-    cocktail_db_response = mongo.db.cocktail.find_one({}, {'_id': False})
-    asmr_data = []
-    for channel, data in sb_db_response.items():
-        asmr_data.append(data)
-    for datum in asmr_data:
-
-
-    return jsonify(asmr_data)
+    cocktail_db_response = mongo.db.recipe_dump.find({}, {'_id': False})
+    recipes = []
+    for recipe in cocktail_db_response:
+        recipes.append(recipe)
+    # print(recipes)
+    return jsonify(recipes)
 
 @app.route("/table")
 def table():
