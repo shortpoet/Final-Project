@@ -4,6 +4,28 @@
 
 ### Narrowing down ideas
 
+## cocktail generation AI
+* initial article: 
+https://medium.com/@daniel_24692/rage-with-the-machine-tasting-cocktails-created-by-an-ai-5651d05ca6e0
+* more technical article: 
+https://towardsdatascience.com/generating-novel-cocktail-recipes-with-a-specific-style-through-recurrent-neural-networks-4339e9168404
+* textgenrnn:
+https://github.com/minimaxir/textgenrnn
+* textgenrnn params:
+https://github.com/minimaxir/textgenrnn/blob/master/docs/textgenrnn-demo.ipynb
+* clustering:
+https://towardsdatascience.com/clustering-ai-generated-cocktail-recipes-using-t-sne-and-plotly-127300df43ba
+* Cocktail API
+    * https://www.thecocktaildb.com/api.php
+* Reddit Recipes Sheet
+    * https://docs.google.com/spreadsheets/d/1fv1OGUhQxKCJh7zfS3w0sMIYYZHAJaoQAnHdR_rNHAk/edit#gid=908610264
+* Well-formatted JSON but only about 100 recipes
+    * https://github.com/teijo/iba-cocktails/blob/master/recipes.json
+* Cocktail Viz similar to our target w/ Recipe JSON - Very complete web app (with Favicons!) - source for glass types svgs
+    * http://haveadrink.msiek.com/?drink=americano
+    * https://github.com/MateuszSiek/have-a-drink/tree/master/resources/glass_svg
+
+
 #### ML Voice Generator
 
 * CS231n  Lecture 10 - Recurrent Neural Networks, Image Captioning, LSTM
