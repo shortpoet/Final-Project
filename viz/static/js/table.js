@@ -4,14 +4,12 @@ endpoint = 'cocktails'
 
 function drawTable(endpoint) {
 	console.log(endpoint)
-	d3.json(endpoint).then(function(asmr_data) {
+	d3.json(endpoint).then(function(recipe_dump) {
 		console.log(endpoint)
-        console.log(asmr_data)
-				var headers = d3.keys(asmr_data[0])
+        console.log(recipe_dump)
+				var headers = d3.keys(recipe_dump[0])
 				console.log(headers)
-				headers = headers.slice(5,6).concat(headers.slice(18,19)).concat(headers.slice(13,14)).concat(headers.slice(20,21))
-					.concat(headers.slice(3,4)).concat(headers.slice(9,10)).concat(headers.slice(1,2)).concat(headers.slice(0,1)).concat(headers.slice(7,8))
-					.concat(headers.slice(11,12))
+				headers = headers.slice(4,5).concat(headers.slice(0,4))
 				console.log(headers)
 		var dataTable = d3.select('#table').append('table').attr('class', 'datatable table table-striped');
 		var header = dataTable.append('thead').selectAll('th').data(headers).enter()
@@ -21,14 +19,12 @@ function drawTable(endpoint) {
 			.attr('id', d => `${d}-header`)
 			.text(d => d)
 		var tbody = dataTable.append('tbody')
-		var content = tbody.selectAll('tr').data(asmr_data).enter()
+		var content = tbody.selectAll('tr').data(recipe_dump).enter()
 			.append('tr')
 			.html((data, i) => (`
-			  <td class="col_0 row_${i + 1}">${data.channel_name}</td><td class="col_1 row_${i + 1}">${data.uploads}</td>
-				<td class="col_2 row_${i + 1}">${data.subs}</td><td class="col_3 row_${i + 1}">${data.views}</td>
-				<td class="col_4 row_${i + 1}">${data.channel_age}</td><td class="col_5 row_${i + 1}">${data.days_btw_uploads}</td>
-				<td class="col_6 row_${i + 1}">${data.avg_100k_views_video}</td><td class="col_7 row_${i + 1}">${data.avg_100k_views_subscriber}</td>
-				<td class="col_8 row_${i + 1}">${data.country}</td><td class="col_9 row_${i + 1}">${data.gender}</td>
+			  <td class="col_0 row_${i + 1}">${data.name}</td><td class="col_1 row_${i + 1}">${data.glass_size}</td>
+				<td class="col_2 row_${i + 1}">${data.glass_type}</td><td class="col_3 row_${i + 1}">${data.ingredients}</td>
+				<td class="col_4 row_${i + 1}">${data.instructions}</td>
 				`
 			))
 			.on('mouseover', function(d, i) {
