@@ -36,6 +36,10 @@ def cocktails():
 def table():
     return render_template("table.html")
 
+@app.route("/glasses")
+def glasses():
+    return render_template("glasses.html")
+
 
 # @app.route("/status_spirit.html#recient")
 # def redir1():
