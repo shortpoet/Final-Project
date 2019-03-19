@@ -15,6 +15,13 @@ https://github.com/minimaxir/textgenrnn
 https://github.com/minimaxir/textgenrnn/blob/master/docs/textgenrnn-demo.ipynb
 * clustering:
 https://towardsdatascience.com/clustering-ai-generated-cocktail-recipes-using-t-sne-and-plotly-127300df43ba
+* Cocktail API
+    * https://www.thecocktaildb.com/api.php
+* Reddit Recipes Sheet
+    * https://docs.google.com/spreadsheets/d/1fv1OGUhQxKCJh7zfS3w0sMIYYZHAJaoQAnHdR_rNHAk/edit#gid=908610264
+* Well-formatted JSON but only about 100 recipes
+    * https://github.com/teijo/iba-cocktails/blob/master/recipes.json
+
 
 #### ML Voice Generator
 
