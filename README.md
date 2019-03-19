@@ -5,15 +5,15 @@
 ### Narrowing down ideas
 
 ## cocktail generation AI
-initial article
+* initial article: 
 https://medium.com/@daniel_24692/rage-with-the-machine-tasting-cocktails-created-by-an-ai-5651d05ca6e0
-more technical article
+* more technical article: 
 https://towardsdatascience.com/generating-novel-cocktail-recipes-with-a-specific-style-through-recurrent-neural-networks-4339e9168404
-textgenrnn
+* textgenrnn:
 https://github.com/minimaxir/textgenrnn
-textgenrnn params
+* textgenrnn params:
 https://github.com/minimaxir/textgenrnn/blob/master/docs/textgenrnn-demo.ipynb
-clustering
+* clustering:
 https://towardsdatascience.com/clustering-ai-generated-cocktail-recipes-using-t-sne-and-plotly-127300df43ba
 
 #### ML Voice Generator
