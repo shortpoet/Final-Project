@@ -21,6 +21,9 @@ https://towardsdatascience.com/clustering-ai-generated-cocktail-recipes-using-t-
     * https://docs.google.com/spreadsheets/d/1fv1OGUhQxKCJh7zfS3w0sMIYYZHAJaoQAnHdR_rNHAk/edit#gid=908610264
 * Well-formatted JSON but only about 100 recipes
     * https://github.com/teijo/iba-cocktails/blob/master/recipes.json
+* Cocktail Viz similar to our target w/ Recipe JSON - Very complete web app (with Favicons!) - source for glass types svgs
+    * http://haveadrink.msiek.com/?drink=americano
+    * https://github.com/MateuszSiek/have-a-drink/tree/master/resources/glass_svg
 
 
 #### ML Voice Generator
