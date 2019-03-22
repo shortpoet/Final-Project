@@ -60,9 +60,7 @@ def table():
 def glasses():
     return render_template("glasses.html")
 
-@app.route("/glasses_height")
-def glasses_height():
-    return render_template("glasses_height.html")
+
 
 
 # @app.route("/status_spirit.html#recient")

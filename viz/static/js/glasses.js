@@ -1,5 +1,5 @@
 
-endpoint = 'svgs'
+endpoint = 'svgs_height'
 
 var chartDiv = document.getElementById("glasses");
 var width = 720;
@@ -36,7 +36,7 @@ var svg = d3.select("#glasses")
 
 
 // Append a group area, then set its margins
-var glassGroup = svg.append("g")
+
   // .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 
@@ -51,9 +51,9 @@ function drawInput(endpoint) {
     var dropdown = dropdownDiv.append('select').classed('form-control', true).attr('id', 'glassSelect');
     var dropdownOptions = dropdown.selectAll('option').data(svgs).enter()
       .append('option')
-      .text(d => d.glass_name)
-      .attr('value', d => d.glass_name)
-      .attr('id', d => d.glass_name)
+      .text(d => d.name)
+      .attr('value', d => d.name)
+      .attr('id', d => d.name)
     dropdownDiv.on('change', function(){
       var sel = document.getElementById('glassSelect')
       var chosenGlass = sel.options[sel.selectedIndex].value
@@ -62,7 +62,7 @@ function drawInput(endpoint) {
       drawGlass(endpoint, chosenGlass)
       })
     
-    d3.select('champagne_extra_fluted').attr('selected', 'selected')
+    d3.select('cocktail_xl_margarita').attr('selected', 'selected')
 
     
 	})
@@ -73,7 +73,7 @@ function drawGlass(endpoint, chosenGlass) {
 	d3.json(endpoint).then(function(svgs) {
     console.log(svgs)
     console.log(chosenGlass)
-    var glass = svgs.filter(datum => datum.glass_name == chosenGlass)
+    var glass = svgs.filter(datum => datum.name == chosenGlass)
     console.log(glass)
     // var glassSvg = d3.select('div#glasses').append('svg')
     //   .attr('id', 'svg')
@@ -83,45 +83,61 @@ function drawGlass(endpoint, chosenGlass) {
     //   .attr('viewBox', '0 0 90 120')
     var boundBox = document.getElementById('svg').getBoundingClientRect()
     console.log(boundBox)  
-    var glassSvg = glassGroup.append('g')
-      .attr('fill', 'none')
-      .attr('stroke', '#000')
-      .attr('stroke-width', '.265')
+    
+    var defs = svg.append('defs')
+      // .append('g')
+      .attr('id', 'def')
+
+    var clip = defs.append('clipPath').attr('id', 'clip')
+      .selectAll('path').data(glass)
+      .enter()
+      .append('path')
+      .attr('d', d => d.mask)
+      
+    
+    var glassGroup = svg.append("g").attr('id', 'glass_group')
+
     var glassPath = glassGroup.selectAll('path').data(glass)
       .enter()
       .append('path')
-      .attr('d', d => d.glass)
+      .attr('d', d => d.path)
       .attr('height', height)
       .attr('width', width)
-    var maskPath = glassGroup.selectAll('path').data(glass)
+      .attr('fill', 'none')
+      .attr('stroke', '#000')
+      .attr('stroke-width', '.265')
+
+    // var ingrRectGroup = glassGroup.append('g')
+
+    var ingrRect = glassGroup.selectAll('rect').data(glass)
       .enter()
-      .append('path')
-      .attr('d', d => d.mask)
-      .attr('id', 'clip-Path')
-      .attr('height', height)
-      .attr('width', width)
-    
-    var clip = glassGroup.selectAll('clipPath').data(svgs)
-      .enter()
-      .append('clipPath')
-      .attr('d', d => d.mask)
-      .attr('id', 'clip')
-    
-    var ingrFill = clip.append('rect')
+      .append('rect')
       .attr('x', 13)
-      .attr('y', 5)
-      // .attr('x', boundBox.x)
-      // .attr('y', boundBox.y)
+      // .attr('y', 20)
+      .attr('y', d => d.maskTopMargin)
+      .attr('height', d => d.maskHeight)
+      // .attr('height', 30)
+      .attr('width', 30)
       .attr('clip-path', 'url(#clip)')
       .style('fill', 'green')
-      .attr('height', 20)
-      .attr('width', 19)
-      // .attr('height', boundBox.height)
-      // .attr('width', boundBox.width)
+
+    // var ingrRect = ingrRectGroup.append('use')
+    //   .attr('class', 'ingredient')
+    //   .attr('xlink:href', '#def')
+    
+    // var maskPath = glassGroup.selectAll('path').data(glass)
+    //   .enter()
+    //   .append('path')
+    //   .attr('d', d => d.mask)
+    //   .attr('id', 'clip-Path')
+    //   .attr('height', height)
+    //   .attr('width', width)
+    
+
     
 	})
 }	
-var chosenGlass = 'champagne_extra_fluted'
+var chosenGlass = 'cocktail_xl_margarita'
 drawGlass(endpoint, chosenGlass)
 
 // d3.xml(svg_file_path).mimeType("image/svg+xml").get(function(error, xml) {
