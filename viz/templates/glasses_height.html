@@ -1,0 +1,107 @@
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Glasses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/d3Style.css') }}">
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+
+</head>
+
+
+
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand logo" href="index.html">
+                    <span class="nav-color-light"></span></a>
+            </div>
+    
+            <div class="nav navbar-nav navbar-right">
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Plots<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/">Home</a></li>
+                      <li><a href="table">Table</a></li>
+                      <li><a href="glasses">Glasses</a></li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+    </nav>
+  <section id="header">
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 jumbotron text-center">
+            <h1>Make AI Cocktail Krafty</h1>
+              <div id="heading-text">
+                <p>Click and see!</p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </section>
+ 
+  <section id="glassSection">
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h3>Glasses</h>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2" id="glassesSelect">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10" id="glasses">
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="footer">
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center" id="footer-heading">
+            <h1>Our Team:</h1>
+              <div id="footer-text">
+                <p>MACK</p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </section>
+    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+  <script src="{{ url_for('static', filename='js/glasses_height.js') }}"></script>
+
+</body>
+
+</html>

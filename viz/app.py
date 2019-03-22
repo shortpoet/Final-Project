@@ -42,6 +42,16 @@ def svgs():
     # print(recipes)
     return jsonify(svgs)
 
+@app.route("/svgs_height")
+def svgs_height():
+
+    svg_db_response = mongo.db.glass_svgs_height.find({}, {'_id': False})
+    svgs = []
+    for svg in svg_db_response:
+        svgs.append(svg)
+    # print(recipes)
+    return jsonify(svgs)
+
 @app.route("/table")
 def table():
     return render_template("table.html")
@@ -49,6 +59,10 @@ def table():
 @app.route("/glasses")
 def glasses():
     return render_template("glasses.html")
+
+@app.route("/glasses_height")
+def glasses_height():
+    return render_template("glasses_height.html")
 
 
 # @app.route("/status_spirit.html#recient")
