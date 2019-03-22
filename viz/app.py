@@ -32,6 +32,16 @@ def cocktails():
     # print(recipes)
     return jsonify(recipes)
 
+@app.route("/svgs")
+def svgs():
+
+    svg_db_response = mongo.db.glass_svgs.find({}, {'_id': False})
+    svgs = []
+    for svg in svg_db_response:
+        svgs.append(svg)
+    # print(recipes)
+    return jsonify(svgs)
+
 @app.route("/table")
 def table():
     return render_template("table.html")

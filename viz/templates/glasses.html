@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}"> 
   <link rel="stylesheet" href="{{ url_for('static', filename='css/d3Style.css') }}">
   
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -53,7 +52,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 jumbotron text-center">
-            <h1>How to be a successful ASMRtist?</h1>
+            <h1>Make AI Cocktail Krafty</h1>
               <div id="heading-text">
                 <p>Click and see!</p>
               </div>
@@ -63,7 +62,7 @@
     </header>
   </section>
  
-  <section id="tablesection">
+  <section id="glassSection">
     <header>
       <div class="container">
         <div class="row">
@@ -75,7 +74,11 @@
     </header>
     <div class="container">
       <div class="row">
-        <div class="col-md-12" id="glasses">
+        <div class="col-md-2" id="glassesSelect">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-10" id="glasses">
         </div>
       </div>
     </div>
