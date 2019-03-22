@@ -1,6 +1,7 @@
 
+endpoint = 'cocktails'
 glass_endpoint = 'svgs'
-recipe_endpoint = 'cocktails'
+
 
 var chartDiv = document.getElementById("glasses");
 var width = 720;
@@ -31,37 +32,48 @@ var svg = d3.select("#glasses")
   .attr("height", svgHeight)
   .attr('viewBox', '0 0 90 120')
 
-function drawInput(glass_endpoint) {
-	d3.json(glass_endpoint).then(function(svgs) {
-    console.log(svgs)
+function drawSelect(glass_endpoint) {
+	d3.json(glass_endpoint).then(function(cocktails) {
+    console.log(cocktails)
     var dropdownDiv = d3.select('#glassesSelect').append('div').classed('form-group', true).append('label')
       .attr('for', 'glassSelect')
       .text('Select Glass');
     var dropdown = dropdownDiv.append('select').classed('form-control', true).attr('id', 'glassSelect');
-    var dropdownOptions = dropdown.selectAll('option').data(svgs).enter()
+    var dropdownOptions = dropdown.selectAll('option').data(cocktails).enter()
       .append('option')
-      .text(d => d.name)
-      .attr('value', d => d.name)
-      .attr('id', d => d.name)
+      .text(d => d.glass_type)
+      .attr('value', d => d.glass_type)
+      .attr('id', d => d.glass_type)
     dropdownDiv.on('change', function(){
       var sel = document.getElementById('glassSelect')
       var chosenGlass = sel.options[sel.selectedIndex].value
       glassGroup.remove()
       glassGroup = svg.append("g")
-      drawGlass(glass_endpoint, chosenGlass)
+      drawGlass(endpoint, chosenGlass)
       })
     d3.select('cocktail_xl_margarita').attr('selected', 'selected')    
 	})
 }	
-drawInput(glass_endpoint)
+drawSelect(glass_endpoint)
 
-function drawGlass(glass_endpoint, chosenGlass) {
-	d3.json(glass_endpoint).then(function(svgs) {
-    d3.json(recipe_endpoint).then(function(recipes) {
-      console.log(svgs)
-      console.log(recipes)
+function drawSearch(endpoint) {
+  d3.json(endpoint).then(function(cocktails) {
+    var searchBox = d3.select('#recipesSearch').append('div').classed('form-group').append('label')
+      .attr('for', 'recipeSearch')
+      .text('Search for Recipe')
+    var searchInput = searchBox.append('input').classed('form-control', true)
+      .attr('id', 'recipeSearch')
+      .attr('type', 'text')
+      .attr('placeholder', 'Search for Recipe')
+      .attr('aria-label', 'Search for Recipe (autocomplete)')
+  })
+}
+
+function drawGlass(endpoint, chosenGlass) {
+	d3.json(endpoint).then(function(cocktails) {
+      console.log(cocktails)
       console.log(chosenGlass)
-      var glass = svgs.filter(datum => datum.name == chosenGlass)
+      var glass = cocktails.filter(datum => datum.glass_type == chosenGlass)
       console.log(glass)
       var boundBox = document.getElementById('svg').getBoundingClientRect()
       console.log(boundBox)  
@@ -71,7 +83,7 @@ function drawGlass(glass_endpoint, chosenGlass) {
         .attr('id', 'def')
 
       var clip = defs.append('clipPath').attr('id', 'clip')
-        .selectAll('path').data(glass)
+        .selectAll('path').data(cocktails)
         .enter()
         .append('path')
         .attr('d', d => d.mask)
@@ -81,7 +93,7 @@ function drawGlass(glass_endpoint, chosenGlass) {
 
       // .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-      var glassPath = glassGroup.selectAll('path').data(glass)
+      var glassPath = glassGroup.selectAll('path').data(cocktails)
         .enter()
         .append('path')
         .attr('d', d => d.path)
@@ -93,7 +105,7 @@ function drawGlass(glass_endpoint, chosenGlass) {
 
       var ingrRectGroup = glassGroup.append('g')
 
-      var ingrRect = ingrRectGroup.selectAll('rect').data(glass)
+      var ingrRect = ingrRectGroup.selectAll('rect').data(cocktails)
         .enter()
         .append('rect')
         .attr('x', 13)
@@ -103,10 +115,9 @@ function drawGlass(glass_endpoint, chosenGlass) {
         .attr('clip-path', 'url(#clip)')
         .style('fill', 'green')
     })
-	})
 }	
 var chosenGlass = 'cocktail_xl_margarita'
-drawGlass(glass_endpoint, chosenGlass)
+drawGlass(endpoint, chosenGlass)
 
 function styleImportedSVG () {
   d3.select('svg')

@@ -25,7 +25,7 @@ def home():
 @app.route("/cocktails")
 def cocktails():
 
-    cocktail_db_response = mongo.db.recipe_dump.find({}, {'_id': False})
+    cocktail_db_response = mongo.db.recipe_db.find({}, {'_id': False})
     recipes = []
     for recipe in cocktail_db_response:
         recipes.append(recipe)
@@ -35,7 +35,7 @@ def cocktails():
 @app.route("/svgs")
 def svgs():
 
-    svg_db_response = mongo.db.glass_svgs_height.find({}, {'_id': False})
+    svg_db_response = mongo.db.glass_svgs.find({}, {'_id': False})
     svgs = []
     for svg in svg_db_response:
         svgs.append(svg)
