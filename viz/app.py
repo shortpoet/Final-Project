@@ -35,16 +35,6 @@ def cocktails():
 @app.route("/svgs")
 def svgs():
 
-    svg_db_response = mongo.db.glass_svgs.find({}, {'_id': False})
-    svgs = []
-    for svg in svg_db_response:
-        svgs.append(svg)
-    # print(recipes)
-    return jsonify(svgs)
-
-@app.route("/svgs_height")
-def svgs_height():
-
     svg_db_response = mongo.db.glass_svgs_height.find({}, {'_id': False})
     svgs = []
     for svg in svg_db_response:
