@@ -52,9 +52,9 @@ function drawInput(glass_endpoint) {
     var dropdown = dropdownDiv.append('select').classed('form-control', true).attr('id', 'glassSelect');
     var dropdownOptions = dropdown.selectAll('option').data(svgs).enter()
       .append('option')
-      .text(d => d.name)
-      .attr('value', d => d.name)
-      .attr('id', d => d.name)
+      .text(d => d.glass_type)
+      .attr('value', d => d.glass_type)
+      .attr('id', d => d.glass_type)
     dropdownDiv.on('change', function(){
       var sel = document.getElementById('glassSelect')
       var chosenGlass = sel.options[sel.selectedIndex].value
@@ -74,7 +74,7 @@ function drawGlass(glass_endpoint, chosenGlass) {
 	d3.json(glass_endpoint).then(function(svgs) {
     console.log(svgs)
     console.log(chosenGlass)
-    var glass = svgs.filter(datum => datum.name == chosenGlass)
+    var glass = svgs.filter(datum => datum.glass_type == chosenGlass)
     console.log(glass)
     // var glassSvg = d3.select('div#glasses').append('svg')
     //   .attr('id', 'svg')
