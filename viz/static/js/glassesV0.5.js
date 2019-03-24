@@ -1,6 +1,6 @@
 
-endpoint = 'cocktails'
-glass_endpoint = 'svgs'
+var endpoint = 'cocktails'
+var glass_endpoint = 'svgs'
 
 
 var chartDiv = document.getElementById("glasses");
@@ -213,50 +213,95 @@ function drawGlass(endpoint, chosenRecipe) {
 
       var ingrRectGroup = glassGroup.append('g')
 
-      recipe[0]['ingredients'].forEach(ingredient => {
-        console.log(ingredient)
-        var ing = ingredient.replace(/[A-Za-z]/g, '')
-        console.log(ing)
-        console.log(recipe[0]['total_volume'])
-        console.log(recipe[0]['maskHeight'])
-        console.log(recipe[0]['maskHeight'] - ((ing/recipe[0]['total_volume']) * recipe[0]['maskHeight']))
-        var ingrRect = ingrRectGroup.selectAll('rect').data(recipe)
-          .enter()
-          .append('rect')
-          .attr('x', 0)
-          .attr('y', d => d.maskTopMargin)
-          // .attr('height', d => d.maskHeight - ((d.area/d.total_volume) * ing))
-          .attr('height', d => d.maskHeight - ((ing/d.total_volume) * d.maskHeight))
-          .attr('width', 60)
-          .attr('clip-path', 'url(#clip)')
-          .style('fill', (d,i) => `rgb(100, ${(i+1)*60}, 100)`)
-      })
+      // recipe[0]['ingredients'].forEach(ingredient => {
+      //   console.log(ingredient)
+      //   var ing = ingredient.replace(/[A-Za-z]/g, '')
+      //   console.log(ing)
+      //   console.log(recipe[0]['total_volume'])
+      //   console.log(recipe[0]['maskHeight'])
+      //   console.log(recipe[0]['maskHeight'] - ((ing/recipe[0]['total_volume']) * recipe[0]['maskHeight']))
+      //   var ingrRect = ingrRectGroup.selectAll('rect').data(recipe)
+      //     .enter()
+      //     .append('rect')
+      //     .attr('x', 0)
+      //     .attr('y', d => d.maskTopMargin)
+      //     // .attr('height', d => d.maskHeight - ((d.area/d.total_volume) * ing))
+      //     .attr('height', d => d.maskHeight - ((ing/d.total_volume) * d.maskHeight))
+      //     .attr('width', 60)
+      //     .attr('clip-path', 'url(# clip)')
+      //     .style('fill', (d,i) => `rgb(100, ${(i+1)*60}, 100)`)
+      // })
 
-      function addIngRect (d, i) {
-        d3.select(this)
-        .selectAll('rect')
-        .data(d)
-        .enter()
-        .append('rect')
-        .attr('x', 0)
-        .attr('y', d => d.maskTopMargin)
-        .attr('height', d => d.maskHeight)
-        .attr('width', 60)
-        .attr('clip-path', 'url(#clip)')
-        .style('fill', 'green')
-      }
+      // function addIngRect (d, i) {
+      //   d3.select(this)
+      //   .selectAll('rect')
+      //   .data(d)
+      //   .enter()
+      //   .append('rect')
+      //   .attr('x', 0)
+      //   .attr('y', d => d.maskTopMargin)
+      //   .attr('height', d => d.maskHeight)
+      //   .attr('width', 60)
+      //   .attr('clip-path', 'url(#clip)')
+      //   .style('fill', 'green')
+      // }
 
       // d3.selectAll('')
 
-      var ingrRect = ingrRectGroup.selectAll('rect').data(recipe)
+      var maskTopMargin = recipe[0]['maskTopMargin']
+      var maskHeight = recipe[0]['maskHeight']
+      var ings = recipe[0]['ingredients'].map(x=>x)
+      var ingVals = recipe[0]['ingredients'].map(x=>x.replace(/[A-Za-z]/g, '').trim())
+      console.log(maskTopMargin, maskHeight, ings)
+      var volume = recipe[0]['total_volume']
+      var sum = 0
+      var k = 0
+      var y = 0
+      var ingrRect = ingrRectGroup.selectAll('rect').data(ingVals)
         .enter()
         .append('rect')
         .attr('x', 0)
-        .attr('y', d => d.maskTopMargin)
-        .attr('height', d => d.maskHeight)
+        .attr('y', maskTopMargin)
+        // .attr('height', (d,i) => {
+        //   this_arr = ingVals.slice(0, ingVals.length + y)
+        //   console.log(this_arr)
+        //   for (var x in this_arr) {
+        //     while (k<=ingVals.length-1) {
+        //       console.log(x)
+        //       var a = parseFloat(ingVals[k])/volume * maskHeight
+        //       console.log(a)
+        //       var b = parseFloat(ingVals[k])/volume * maskHeight
+        //       console.log(b)
+        //       if (k == 0) {
+        //         sum = a 
+        //       }
+        //       else {
+        //         sum += b
+        //       }
+        //       console.log(sum)
+        //       console.log(k)
+        //       k += 1
+        //       y -= 1
+        //       console.log(k)
+        //       return sum
+
+        //     }
+        //   return sum
+        //   }
+        // return sum
+        // })
+        .attr('height', (d,i) => {
+          console.log(y)
+          this_arr = ingVals.slice(0, ingVals.length + y)
+          console.log(this_arr)
+          this_arr = this_arr.map(x=>x/volume*maskHeight)
+          console.log(this_arr)
+          y -= 1
+          return this_arr.reduce((a,b)=> a + b, 0)
+        })
         .attr('width', 60)
-        .attr('clip-path', 'url(#clip)')
-        .style('fill', 'green')
+        .attr('clip-path', 'url(#clip)') 
+        .style('fill', (d,i) => `rgb(100, ${(i+1)*60}, 100)`)
     })
 }	
 var chosenRecipe = 'Adam and Eve'
