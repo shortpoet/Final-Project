@@ -387,7 +387,18 @@ function drawTable(endpoint, chosenIngred) {
 			.on('mouseout', function(d, i) {
 				d3.select(this).style('background-color', null).style('color', null)
 				d3.select('.data').append('table').classed('table table-striped table-sortable', true)
-			})
+      })
+      .on('click', function(d, i) {
+        svg.remove()
+        svg = d3.select("#glasses")
+          .append("svg")
+          .attr('id', 'svg')
+          .attr("width", svgWidth)
+          .attr("height", svgHeight)
+          .attr('viewBox', '0 -5 90 90')
+        var chosenRecipe = this.__data__.name
+        console.log(this)
+        drawGlass(endpoint, chosenRecipe)      })
 		var sortAscending = true
 		header.on('click',function(d, i) {
 			var sort_value = d3.select(this).attr('value')
