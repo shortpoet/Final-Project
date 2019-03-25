@@ -5,19 +5,19 @@ var glass_endpoint = 'svgs'
 
 var chartDiv = document.getElementById("glasses");
 var width = 720;
-var height = 960;
+var height = 720;
 // var width = chartDiv.clientWidth;
 // var height = chartDiv.clientHeight;
 
 // Define SVG area dimensions
-var svgWidth = 720;
-var svgHeight = 960;
+var svgWidth = 960;
+var svgHeight = 720;
 // Define the chart's margins as an object
 var margin = {
-  top: 60,
-  right: 60,
-  bottom: 60,
-  left: 60
+  top: 5,
+  right: 5,
+  bottom: 5,
+  left: 5
 };
 
 // Define dimensions of the chart area
@@ -28,33 +28,9 @@ var glassHeight = svgHeight - margin.top - margin.bottom;
 var svg = d3.select("#glasses")
   .append("svg")
   .attr('id', 'svg')
-  .attr("width", svgWidth)
-  .attr("height", svgHeight)
-  .attr('viewBox', '0 0 90 120')
-
-// function drawSelect(glass_endpoint) {
-// 	d3.json(glass_endpoint).then(function(cocktails) {
-//     console.log(cocktails)
-//     var dropdownDiv = d3.select('#glassesSelect').append('div').classed('form-group', true).append('label')
-//       .attr('for', 'glassSelect')
-//       .text('Select Glass');
-//     var dropdown = dropdownDiv.append('select').classed('form-control', true).attr('id', 'glassSelect');
-//     var dropdownOptions = dropdown.selectAll('option').data(cocktails).enter()
-//       .append('option')
-//       .text(d => d.glass_type)
-//       .attr('value', d => d.glass_type)
-//       .attr('id', d => d.glass_type)
-//     dropdownDiv.on('change', function(){
-//       var sel = document.getElementById('glassSelect')
-//       var chosenGlass = sel.options[sel.selectedIndex].value
-//       glassGroup.remove()
-//       glassGroup = svg.append("g")
-//       drawGlass(endpoint, chosenRecipe)
-//       })
-//     d3.select('cocktail_xl_margarita').attr('selected', 'selected')    
-// 	})
-// }	
-// drawSelect(glass_endpoint)
+  .attr("width", glassWidth)
+  .attr("height", glassHeight)
+  .attr('viewBox', '0 -5 90 90')
 
 function drawSearch(endpoint) {
   d3.json(endpoint).then(function(cocktails) {
@@ -62,22 +38,22 @@ function drawSearch(endpoint) {
     var recipeSet = new Set(recipeNames);
     var recipeArr = [...recipeSet]
     var recipeSorted = recipeArr.sort((a,b) => a > b ? 1 : a === b ? 0 : -1);
-    console.log(recipeSorted)
-    var searchBox = d3.select('#recipesSearch').append('div').classed('form-group', true).append('label')
+    // console.log(recipeSorted)
+    var recSearchBox = d3.select('#recipesSearch').append('div').classed('form-group', true).append('label')
       .attr('for', 'recipeSearch')
       .text('Search for Recipe')
-    var searchInput = searchBox.append('input').classed('form-control', true)
+    var recSearchInput = recSearchBox.append('input').classed('form-control', true)
       .attr('id', 'recipeSearch')
       .attr('type', 'text')
       .attr('placeholder', 'Search for Recipe')
       .attr('aria-label', 'Search for Recipe (autocomplete)')
     var chosenRecipe = 'Adam and Eve'
-    drawGlass(endpoint, chosenRecipe)
+    // drawGlass(endpoint, chosenRecipe)
     autocomplete(document.getElementById('recipeSearch'), recipeSorted);
-    var submit = searchBox.append('button')
+    var recSubmit = recSearchBox.append('button')
       .attr('type', 'submit')
       .attr('class', 'btn btn-default')
-      .attr('id', 'submitSearch')
+      .attr('id', 'recSubmitSearch')
       .text('Search')
       .on('click', function(d, i){
         svg.remove()
@@ -86,16 +62,34 @@ function drawSearch(endpoint) {
           .attr('id', 'svg')
           .attr("width", svgWidth)
           .attr("height", svgHeight)
-          .attr('viewBox', '0 0 90 120')
-        var chosenRecipe = document.getElementById('recipeSearch').value
+          .attr('viewBox', '0 -5 90 90')
+          var chosenRecipe = document.getElementById('recipeSearch').value
         console.log(chosenRecipe)
         drawGlass(endpoint, chosenRecipe)
       })
+    var ingSearchBox = d3.select('#ingrSearch').append('div').classed('form-group', true).append('label')
+      .attr('for', 'ingredSearch')
+      .text('Search for Ingredient')
+    var ingSearchInput = ingSearchBox.append('input').classed('form-control', true)
+      .attr('id', 'ingredSearch')
+      .attr('type', 'text')
+      .attr('placeholder', 'Search for Ingredient')
+      .attr('aria-label', 'Search for Ingredient (autocomplete)')
+    var ingSubmit = ingSearchBox.append('button')
+      .attr('type', 'submit')
+      .attr('class', 'btn btn-default')
+      .attr('id', 'submitSearch')
+      .text('Search')
+      .on('click', function(d, i){
+        d3.select('table').remove()
+        var chosenIngred = document.getElementById('ingredSearch').value
+        console.log(chosenIngred)
+        drawTable(endpoint, chosenIngred)
+      })
+
   })
 }
 drawSearch(endpoint)
-
-
 
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
@@ -196,12 +190,12 @@ function autocomplete(inp, arr) {
 
 function drawGlass(endpoint, chosenRecipe) {
 	d3.json(endpoint).then(function(cocktails) {
-      console.log(cocktails)
+      // console.log(cocktails)
       console.log(chosenRecipe)
       var recipe = cocktails.filter(datum => datum.name == chosenRecipe)
       console.log(recipe)
       var boundBox = document.getElementById('svg').getBoundingClientRect()
-      console.log(boundBox)  
+      // console.log(boundBox)  
       
       var defs = svg.append('defs')
         // .append('g')
@@ -215,29 +209,27 @@ function drawGlass(endpoint, chosenRecipe) {
         
       // Append a group area, then set its margins
       var glassGroup = svg.append("g").attr('id', 'glass_group')
-
-      // .attr("transform", `translate(${margin.left}, ${margin.top})`);
+        .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
       var glassPath = glassGroup.selectAll('path').data(recipe)
         .enter()
         .append('path')
         .attr('d', d => d.path)
-        .attr('height', height)
-        .attr('width', width)
+        // .attr('height', .5 * glassHeight)
+        // .attr('width', .5 * glassWidth)
         .attr('fill', 'none')
         .attr('stroke', '#000')
         .attr('stroke-width', '.265')
 
       var ingrRectGroup = glassGroup.append('g')
+        .attr('id', 'ingrRectGroup')
 
       var maskTopMargin = recipe[0]['maskTopMargin']
       var maskHeight = recipe[0]['maskHeight']
       var ings = recipe[0]['ingredients'].map(x=>x)
       var ingVals = recipe[0]['ingredients'].map(x=>x.replace(/[A-Za-z]/g, '').trim())
-      console.log(maskTopMargin, maskHeight, ings)
+      // console.log(maskTopMargin, maskHeight, ings)
       var volume = recipe[0]['total_volume']
-      var sum = 0
-      var k = 0
       var y = 0
       var ingrRect = ingrRectGroup.selectAll('rect').data(ingVals)
         .enter()
@@ -245,17 +237,88 @@ function drawGlass(endpoint, chosenRecipe) {
         .attr('x', 0)
         .attr('y', maskTopMargin)
         .attr('height', (d,i) => {
-          console.log(y)
+          // console.log(y)
           this_arr = ingVals.slice(0, ingVals.length + y)
-          console.log(this_arr)
+          // console.log(this_arr)
           this_arr = this_arr.map(x=>x/volume*maskHeight)
-          console.log(this_arr)
+          // console.log(this_arr)
           y -= 1
           return this_arr.reduce((a,b)=> a + b, 0)
         })
         .attr('width', 60)
         .attr('clip-path', 'url(#clip)') 
         .style('fill', (d,i) => `rgb(100, ${(i+1)*60}, 100)`)
+      var ingrTextGroup = ingrRectGroup.append('g')
+        .attr('id', 'ingrTextGroup')
+        .attr("transform", `translate(${margin.left + 50}, ${margin.top})`);
+        // .attr("transform", `translate(10, 0)`);
+      var k = 0
+      var rectHeights = d3.selectAll('rect').nodes().map(x=>x.getBBox().height).reverse()
+
+      console.log(rectHeights)
+      var ingrText = ingrTextGroup.selectAll('text').data(ings)
+        .enter()
+        .append('text')
+        .attr('x', 0)
+        .attr('y', (d,i) => {
+          while (i < rectHeights.length) {
+            if (i == 0) {
+              console.log(rectHeights[i])
+              return (rectHeights[i]/2)
+            }
+            else {
+              console.log(rectHeights[i])
+              return ((rectHeights[i] - rectHeights[i-1]) / 2) + rectHeights[i-1]
+            }
+          }
+        })
+        .text(d => d)  
+        .style('font-size', 2)
+        .style('fill', 'black')
+        .style('text-align', 'center')
+        .classed('ingrText', true)
+      
+      var instrTextGroup = glassGroup.append('g')
+        .attr("transform", `translate(${margin.left + 50}, ${margin.top})`);
+
+      var instrRect = instrTextGroup.append('div')
+        .attr('class', 'instrDiv')
+        .style('top', 0 + 'px')
+        .style('left', 0 + 'px')
+        .style('width', glassWidth + 'px')
+        .style('height', glassHeight + 'px')
+
+      // var svg = d3.select("body")
+      //   .append("svg")
+      //   .attr("width", w)
+      //   .attr("height", h)
+      //   .attr("border",border)
+
+      var borderPath = glassGroup.append("rect")
+        .attr("x", -18)
+        .attr("y", -5)
+        .attr("height", 75)
+        .attr("width", 117)
+        .style("stroke", 'black')
+        .style("fill", "none")
+        .style("stroke-width", 1);
+
+      var instrText = instrRect.selectAll('html').data(recipe)
+        .enter()
+        .append('html')
+        // .text(d => d.instructions)
+        .html(d => `<p>${d.instructions}</p>`)
+        .attr('x', 0)
+        .attr('y', 0)
+        // .attr('width', 50)
+        // .attr('height', 50)
+        .style('font-size', 2)
+        .style('fill', 'green')
+        .style('text-align', 'center')
+        .classed('instrText', true)
+
+
+    
     })
 }	
 var chosenRecipe = 'Adam and Eve'
@@ -281,3 +344,77 @@ function styleImportedSVG () {
         })
     })
 }
+function drawTable(endpoint, chosenIngred) {
+	// console.log(endpoint)
+	d3.json(endpoint).then(function(recipe_dump) {
+    
+    var chosenRecipes = []
+    var recipeFilter = recipe_dump.filter(recipe => {
+      recipe['ingredients'].forEach(ingredient => {
+        // console.log(ingredient)
+        // if (ingredient !== undefined && ingredient.indexOf(chosenIngred) !== -1) {
+        if (ingredient.includes(chosenIngred)) {
+          chosenRecipes.push(recipe)
+          return true;
+        }
+      })
+    })
+		// console.log(endpoint)
+    console.log(chosenRecipes)
+		var headers = d3.keys(recipe_dump[0])
+		// console.log(headers)
+		headers = headers.slice(9,10).concat(headers.slice(2,6))
+		// console.log(headers)
+		var dataTable = d3.select('#table').append('table').attr('class', 'datatable table table-striped');
+		var header = dataTable.append('thead').selectAll('th').data(headers).enter()
+			.append('th')
+			.attr('class', 'sortable')
+			.attr('value', d => d)
+			.attr('id', d => `${d}-header`)
+			.text(d => d)
+		var tbody = dataTable.append('tbody')
+		var content = tbody.selectAll('tr').data(chosenRecipes).enter()
+			.append('tr')
+			.html((data, i) => (`
+			  <td class="col_0 row_${i + 1}">${data.name}</td><td class="col_1 row_${i + 1}">${data.glass_size}</td>
+				<td class="col_2 row_${i + 1}">${data.glass_type}</td><td class="col_3 row_${i + 1}">${data.ingredients}</td>
+				<td class="col_4 row_${i + 1}">${data.instructions}</td>
+				`
+			))
+			.on('mouseover', function(d, i) {
+				d3.select(this).style('background-color', 'rgb(0, 14, 142').style('color', 'silver')
+			})
+			.on('mouseout', function(d, i) {
+				d3.select(this).style('background-color', null).style('color', null)
+				d3.select('.data').append('table').classed('table table-striped table-sortable', true)
+			})
+		var sortAscending = true
+		header.on('click',function(d, i) {
+			var sort_value = d3.select(this).attr('value')
+			var numeric = headers.slice(1, 8)
+			console.log(headers)
+			console.log(numeric)
+			if (sortAscending === true) {
+				if (numeric.includes(sort_value)) {
+					content.sort((a,b) => d3.ascending(parseFloat(a[sort_value]), parseFloat(b[sort_value])))
+				}
+				else {
+					content.sort((a,b) => d3.ascending(a[sort_value].toLowerCase().replace(/\s/g, ''), b[sort_value].toLowerCase().replace(/\s/g, '')))
+				}
+				sortAscending = false
+				d3.select(this).attr('class', 'asc')
+			} else {
+				if (numeric.includes(sort_value)) {
+					content.sort((a,b) => d3.descending(parseFloat(a[sort_value]), parseFloat(b[sort_value])))
+				}
+				else {
+					content.sort((a,b) => d3.descending(a[sort_value].toLowerCase().replace(/\s/g, ''), b[sort_value].toLowerCase().replace(/\s/g, '')))
+				}
+				sortAscending = true
+				d3.select(this).attr('class', 'desc')
+			}
+		})
+	})
+}
+var chosenIngred = 'rum'
+drawTable(endpoint, chosenIngred)

@@ -1,3 +1,7 @@
+.instrDiv {
+  border: 1px solid black;
+}
+
 .aText {
   font-family: sans-serif;
   font-size: 16px;
@@ -101,9 +105,7 @@ body {
   shape-rendering: crispEdges;
 }
 
-/*.x.axis path {
-  display: none;
-}*/
+
 
 .line{
   fill: none;
@@ -113,86 +115,3 @@ body {
 
 
 
-/* th { 
-	padding: 4px; 
-	border: 1px solid #CCC;
-	overflow: hidden;
-	text-align: left;
-	vertical-align: middle;
-}
-th { 
-	background-color: #DDD; 
-	font-weight: 400;
-}
-th,
-td { 
-	
-	width: 100%;
-} 
-th.sortable { 
-	padding-right: 18px;
-	position: relative;
-}
-th.sortable:before,
-th.sortable:after {
-	border: 4px solid transparent;
-	content: "";
-	display: block;
-	height: 0;
-	right: 5px;
-	top: 50%;
-	position: absolute;
-	width: 0;
-}
-th.sortable:before {
-	border-bottom-color: #666;
-	margin-top: -9px;
-}
-th.sortable:after {
-	border-top-color: #666;
-	margin-top: 1px;
-}
-th.asc { 
-	padding-right: 18px;
-	position: relative;
-}
-
-th.asc:after {
-	width: 0; 
-  height: 0; 
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-bottom: 4px solid #666;
-  display: block;
-  position: absolute;
-  content: '';
-}
-
-th.asc:after {
-	border-top-color: #666;
-  margin-top: -17px;
-  margin-left: 64px
-}
-th.desc { 
-	padding-right: 18px;
-	position: relative;
-}
-
-th.desc:after {
-	width: 0; 
-  height: 0; 
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid #666;
-  display: block;
-  position: absolute;
-  content: '';
-}
-
-th.desc:after {
-	border-top-color: #666;
-  margin-top: -10%;
-  margin-left: 72%
-}
-
-*/
