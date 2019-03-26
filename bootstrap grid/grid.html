@@ -5,8 +5,8 @@
       <title>Bootsrap Grid</title>
       
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-      <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> -->
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
       <!-- js from dashboard example -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js" crossorigin="anonymous"></script>
@@ -14,6 +14,11 @@
       <script src="dashboard.js"></script>
       <!-- css from dashboard example -->
       <link rel="stylesheet" href="dashboard.css">
+      <!-- js and css for bootstrap tag search -->
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/lib/twitter-bootstrap/2.3.2/css/bootstrap.min.css"> -->
+      <link rel="stylesheet" href="bootstrap-tagsinput.css">
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+      <script src="bootstrap-tagsinput.js"></script>
   </head>
 
   <!-- navbar from dashboard example -->
@@ -109,6 +114,13 @@
           </div>
         </div>
         <div class="col-md-10">
+          <div class="row">
+            <!-- tag search bar -->
+            <div class="bootstrap-tagsinput">
+              <br><br><br>
+              <input type="text" value="" data-role="tagsinput" placeholder="Add tags" />
+            </div>
+          </div>
           <div class="row">
             <div class="col-md-6 col-sm-12">
               :::GLASS VISUALZATION GOES HERE:::
