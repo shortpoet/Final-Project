@@ -32,7 +32,7 @@ var svg = d3.select("#glasses")
   .attr("height", glassHeight)
   .attr('viewBox', '0 -5 90 90')
 
-function drawSearch(endpoint) {
+function drawInput(endpoint) {
   d3.json(endpoint).then(function(cocktails) {
     var recipeNames = cocktails.map(x => x.name);
     var recipeSet = new Set(recipeNames);
@@ -56,6 +56,10 @@ function drawSearch(endpoint) {
       .attr('id', 'recSubmitSearch')
       .text('Search')
       .on('click', function(d, i){
+        d3.select('table').remove()
+        var chosenRecipe = document.getElementById('recipeSearch').value
+        console.log(chosenIngred)
+        drawTable(endpoint, chosenRecipe, 'recipe')
         svg.remove()
         svg = d3.select("#glasses")
           .append("svg")
@@ -63,7 +67,7 @@ function drawSearch(endpoint) {
           .attr("width", svgWidth)
           .attr("height", svgHeight)
           .attr('viewBox', '0 -5 90 90')
-          var chosenRecipe = document.getElementById('recipeSearch').value
+        var chosenRecipe = document.getElementById('recipeSearch').value
         console.log(chosenRecipe)
         drawGlass(endpoint, chosenRecipe)
       })
@@ -84,12 +88,16 @@ function drawSearch(endpoint) {
         d3.select('table').remove()
         var chosenIngred = document.getElementById('ingredSearch').value
         console.log(chosenIngred)
-        drawTable(endpoint, chosenIngred)
+        drawTable(endpoint, chosenIngred, 'ingredient')
       })
-
+      var generate = d3.select('#generate').append('button')
+      .attr('type', 'submit')
+      .attr('class', 'btn btn-default')
+      .attr('id', 'generateButton')
+      .text('Generate')
   })
 }
-drawSearch(endpoint)
+drawInput(endpoint)
 
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
@@ -191,7 +199,7 @@ function autocomplete(inp, arr) {
 function drawGlass(endpoint, chosenRecipe) {
 	d3.json(endpoint).then(function(cocktails) {
       // console.log(cocktails)
-      console.log(chosenRecipe)
+      // console.log(chosenRecipe)
       var recipe = cocktails.filter(datum => datum.name == chosenRecipe)
       console.log(recipe)
       var boundBox = document.getElementById('svg').getBoundingClientRect()
@@ -344,21 +352,29 @@ function styleImportedSVG () {
         })
     })
 }
-function drawTable(endpoint, chosenIngred) {
+function drawTable(endpoint, chosenParam, paramType) {
 	// console.log(endpoint)
 	d3.json(endpoint).then(function(recipe_dump) {
     
     var chosenRecipes = []
-    var recipeFilter = recipe_dump.filter(recipe => {
-      recipe['ingredients'].forEach(ingredient => {
-        // console.log(ingredient)
-        // if (ingredient !== undefined && ingredient.indexOf(chosenIngred) !== -1) {
-        if (ingredient.includes(chosenIngred)) {
-          chosenRecipes.push(recipe)
-          return true;
-        }
+    if (paramType === 'ingredient') {
+      var recipeFilter = recipe_dump.filter(recipe => {
+        recipe['ingredients'].forEach(ingredient => {
+          // console.log(ingredient)
+          // if (ingredient !== undefined && ingredient.indexOf(chosenIngred) !== -1) {
+          if (ingredient.includes(chosenParam)) {
+            chosenRecipes.push(recipe)
+            return true;
+          }
       })
     })
+    }
+    else if (paramType === 'recipe') {
+      var chosenRecipes = recipe_dump.filter(datum => datum.name == chosenParam)
+      // chosenRecipes.push(recipe)
+      // console.log(recipe)  
+    }
+    
 		// console.log(endpoint)
     console.log(chosenRecipes)
 		var headers = d3.keys(recipe_dump[0])
@@ -398,7 +414,9 @@ function drawTable(endpoint, chosenIngred) {
           .attr('viewBox', '0 -5 90 90')
         var chosenRecipe = this.__data__.name
         console.log(this)
-        drawGlass(endpoint, chosenRecipe)      })
+        drawGlass(endpoint, chosenRecipe)
+        document.getElementById('glasses').scrollIntoView()      
+      })
 		var sortAscending = true
 		header.on('click',function(d, i) {
 			var sort_value = d3.select(this).attr('value')
@@ -428,4 +446,5 @@ function drawTable(endpoint, chosenIngred) {
 	})
 }
 var chosenIngred = 'rum'
-drawTable(endpoint, chosenIngred)
+var paramType = 'ingredient'
+drawTable(endpoint, chosenIngred, paramType)
