@@ -32,6 +32,8 @@ var svg = d3.select("#glasses")
   .attr("height", glassHeight)
   .attr('viewBox', '0 -5 110 911')
 
+
+
 function drawInput(endpoint) {
   d3.json(endpoint).then(function(cocktails) {
     var recipeNames = cocktails.map(x => x.name);
@@ -202,8 +204,14 @@ function drawGlass(endpoint, chosenRecipe) {
       // console.log(chosenRecipe)
       var recipe = cocktails.filter(datum => datum.name == chosenRecipe)
       console.log(recipe)
-      var boundBox = document.getElementById('svg').getBoundingClientRect()
-      // console.log(boundBox)  
+      var maskTopMargin = recipe[0]['maskTopMargin']
+      var maskHeight = recipe[0]['maskHeight']
+      var ings = recipe[0]['ingredients'].map(x=>x)
+      var ingVals = recipe[0]['ingredients'].map(x=>x.replace(/[A-Za-z]/g, '').trim())
+      // console.log(maskTopMargin, maskHeight, ings)
+      var volume = recipe[0]['total_volume']
+      var name = recipe[0]['name']
+
       
       var defs = svg.append('defs')
         // .append('g')
@@ -234,6 +242,16 @@ function drawGlass(endpoint, chosenRecipe) {
       var glassGroup = svg.append("g").attr('id', 'glass_group')
         .attr("transform", `translate(${margin.left - 3}, ${margin.top})`);
 
+      var nameGroup = glassGroup.append('g')
+        .attr('transform', 'translate(38, -4)')
+        .attr('id', 'nameGroup')
+      var nameText = nameGroup.append('text')
+        // .append('text')
+        .text(`${name}`)
+        .style('font-size', 5)
+        .style('fill', 'purple')
+        .style('text-align', 'center') 
+
       var glassPath = glassGroup.selectAll('path').data(recipe)
         .enter()
         .append('path')
@@ -247,12 +265,6 @@ function drawGlass(endpoint, chosenRecipe) {
       var ingrRectGroup = glassGroup.append('g')
         .attr('id', 'ingrRectGroup')
 
-      var maskTopMargin = recipe[0]['maskTopMargin']
-      var maskHeight = recipe[0]['maskHeight']
-      var ings = recipe[0]['ingredients'].map(x=>x)
-      var ingVals = recipe[0]['ingredients'].map(x=>x.replace(/[A-Za-z]/g, '').trim())
-      // console.log(maskTopMargin, maskHeight, ings)
-      var volume = recipe[0]['total_volume']
       var y = 0
       var ingrRect = ingrRectGroup.selectAll('rect').data(ingVals)
         .enter()
@@ -303,7 +315,7 @@ function drawGlass(endpoint, chosenRecipe) {
 
       var borderPath = glassGroup.append("rect")
         .attr("x", 0)
-        .attr("y", -5)
+        .attr("y", -9)
         .attr("height", 75)
         .attr("width", 105)
         .style("stroke", 'black')
@@ -317,7 +329,10 @@ function drawGlass(endpoint, chosenRecipe) {
 
       var instrDiv = d3.select('#instructions')
         .style('border', '5px solid black')
+        .attr("transform", `translate(0, -5px)`)
         // .style('height', 480 +'px')
+        .append('g')
+        .attr('id', 'instrGroup')
         .append('ul')
         .selectAll('li')
         .data(instructions)
@@ -331,42 +346,73 @@ function drawGlass(endpoint, chosenRecipe) {
         .append('hr')
         .append('br')
 
-      var ratingGroup = glassGroup.append('g')
+      var starGroup = glassGroup.append('g')
         .attr('transform', 'translate(2.5, 0)')
-        // .append('div')
         .attr('class', 'stars')
         .attr('data-stars', 1)
-        
       
-      // var dataStars1 = ratingGroup.append('use')
-      //   .attr('transform', 'translate(0, 75)')
-      //   .attr('data-rating', 1)
-      //   .attr('id', 'data-stars1')
-      //   .attr("xlink:href","#starDef")
-      // var dataStars2 = ratingGroup.append('use')
-      //   .attr('transform', 'translate(20, 75)')
-      //   .attr('data-rating', 2)
-      //   .attr('id', 'data-stars2')
-      //   .attr("xlink:href","#starDef")
-      // var dataStars3 = ratingGroup.append('use')
-      //   .attr('transform', 'translate(40, 75)')
-      //   .attr('data-rating', 3)
-      //   .attr('id', 'data-stars3')
-      //   .attr("xlink:href","#starDef")
-      // var dataStars4 = ratingGroup.append('use')
-      //   .attr('transform', 'translate(60, 75)')
-      //   .attr('data-rating', 4)
-      //   .attr('id', 'data-stars4')
-      //   .attr("xlink:href","#starDef")
-      // var dataStars5 = ratingGroup.append('use')
-      //   .attr('transform', 'translate(80, 75)')
-      //   .attr('data-rating', 5)
-      //   .attr('id', 'data-stars5')
-      //   .attr("xlink:href","#starDef")
-      
+      var isSaveClicked = false
+
+      function drawRating(rating) {
+        console.log('drawRatingggggggggggggggggg')
+        var ratingGroup = glassGroup.append('g')
+          .attr('transform', 'translate(38, 60)')
+          .attr('id', 'ratingGroup')
+        var ratingForm = ratingGroup.append('form')
+          .attr('method', 'POST')
+          .append('input')
+          .attr('name', 'rating')
+          .attr('value', '')
+          // .attr('type', 'submit')
+          .attr('id', 'submitRating')
+
+        var ratingText = ratingGroup.append('text')
+          .text(`Click to save ${rating} star rating`)
+          .style('font-size', 5)
+          .style('fill', '#d8d8d8')
+          .style('text-align', 'center') 
+          .on('mouseover', function(){
+            if (isSaveClicked === false) {
+            d3.select(this)
+              .style('fill', '#ffd055')
+            }
+          }) 
+          .on('mouseout', function(){
+            if (isSaveClicked === false) {
+              d3.select(this)
+                .style('fill', '#d8d8d8')
+            }
+          }) 
+          .on('click', function(){
+            //  write to database
+            if (isSaveClicked === false) {
+              console.log('write to db')
+              d3.select('#submitRating')
+                .attr('value', rating)
+              var selectedRating = document.getElementById('submitRating')
+              var form = d3.select('#submitRating').node()
+              // var form = d3.select(this.parentNode).node()
+              console.log(d3.select(this.parentNode))
+              console.log(d3.select(this))
+              console.log(form)
+              form.submit()
+              console.log(selectedRating)
+              d3.select(this).style('fill', '#ffd055')
+              isSaveClicked = true
+            }
+          })
+          // ratingGroup.append('button')
+          //   .attr('type', 'submit') 
+          //   .attr('form', 'submitRating')
+          //   .text('Click me')
+          //   .on('click', function(){
+          //     console.log('CLICKEDDDDD')
+          //   }) 
+      }
+
       var isClicked = false
 
-      var dataStars1 = ratingGroup.append('g')
+      var dataStars1 = starGroup.append('g')
         .attr('transform', 'translate(0, 75)')
         .append('svg')
         .attr('data-rating', 1)
@@ -397,13 +443,17 @@ function drawGlass(endpoint, chosenRecipe) {
             isClicked = true
             s.style('fill', '#ffd055')
             g.classed('selectedRating', true)
+            d3.select('#ratingGroup').remove()
+            drawRating(g.attr('data-rating'))
+            console.log(g.attr('data-rating'))
           }
           else {
             isClicked = false
             g.classed('selectedRating', false)
+            d3.select('#ratingGroup').remove()
           }
         })
-      var dataStars2 = ratingGroup.append('g')
+      var dataStars2 = starGroup.append('g')
         .attr('transform', 'translate(20, 75)')
         .append('svg')
         .attr('data-rating', 2)
@@ -440,14 +490,16 @@ function drawGlass(endpoint, chosenRecipe) {
             s.style('fill', '#ffd055')
             t.style('fill', '#ffd055')
             g.classed('selectedRating', true)
-
+            d3.select('#ratingGroup').remove()
+            drawRating(g.attr('data-rating'))
           }
           else {
             isClicked = false
             g.classed('selectedRating', false)
+            d3.select('#ratingGroup').remove()
           }
         })
-      var dataStars3 = ratingGroup.append('g')
+      var dataStars3 = starGroup.append('g')
         .attr('transform', 'translate(40, 75)')
         .append('svg')
         .attr('data-rating', 3)
@@ -490,13 +542,16 @@ function drawGlass(endpoint, chosenRecipe) {
             t.style('fill', '#ffd055')
             u.style('fill', '#ffd055')
             g.classed('selectedRating', true)
+            d3.select('#ratingGroup').remove()
+            drawRating(g.attr('data-rating'))
           }
           else {
             isClicked = false
             g.classed('selectedRating', false)
+            d3.select('#ratingGroup').remove()
           }
         })
-      var dataStars4 = ratingGroup.append('g')
+      var dataStars4 = starGroup.append('g')
         .attr('transform', 'translate(60, 75)')
         .append('svg')
         .attr('data-rating', 4)
@@ -545,13 +600,16 @@ function drawGlass(endpoint, chosenRecipe) {
             u.style('fill', '#ffd055')
             v.style('fill', '#ffd055')
             g.classed('selectedRating', true)
+            d3.select('#ratingGroup').remove()
+            drawRating(g.attr('data-rating'))
           }
           else {
             isClicked = false
             g.classed('selectedRating', false)
+            d3.select('#ratingGroup').remove()
           }
         })
-      var dataStars5 = ratingGroup.append('g')
+      var dataStars5 = starGroup.append('g')
         .attr('transform', 'translate(80, 75)')
         .append('svg')
         .attr('data-rating', 5)
@@ -593,26 +651,35 @@ function drawGlass(endpoint, chosenRecipe) {
           }
         })  
         .on('click', function(){
+          var g = d3.select('#data-stars5')
+          var s = d3.select('#data-stars1 polygon')
+          var t = d3.select('#data-stars2 polygon')
+          var u = d3.select('#data-stars3 polygon')
+          var v = d3.select('#data-stars4 polygon')
+          var w = g.select('polygon')
           if (isClicked === false) {
             isClicked = true
-            var g = d3.select('#data-stars5')
-            var s = d3.select('#data-stars1 polygon')
-            var t = d3.select('#data-stars2 polygon')
-            var u = d3.select('#data-stars3 polygon')
-            var v = d3.select('#data-stars4 polygon')
-            var w = g.select('polygon')
             s.style('fill', '#ffd055')
             t.style('fill', '#ffd055')
             u.style('fill', '#ffd055')
             v.style('fill', '#ffd055')
             w.style('fill', '#ffd055')
             g.classed('selectedRating', true)
+            d3.select('#ratingGroup').remove()
+            drawRating(g.attr('data-rating'))
           }
           else {
             isClicked = false
             g.classed('selectedRating', false)
+            d3.select('#ratingGroup').remove()
           }
         })
+      var starInstrDiv = d3.select('#glasses').append('div')
+        .attr("transform", `translate(0, -25)`)
+        .attr('id', 'starInstrDiv')
+        .append('text')
+        .text('Click star to set rating -- Click again to unset')  
+      
     })
 }	
 
@@ -690,6 +757,8 @@ function drawTable(endpoint, chosenParam, paramType) {
       })
       .on('click', function(d, i) {
         svg.remove()
+        d3.select('#starInstrDiv').remove()
+        d3.select('#instrGroup').remove()
         svg = d3.select("#glasses")
           .append("svg")
           .attr('id', 'svg')

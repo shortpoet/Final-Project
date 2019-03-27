@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, Markup, url_for, jsonify
+from flask import Flask, render_template, redirect, Markup, url_for, jsonify, request
 from flask_pymongo import PyMongo
 import json
 import re
@@ -22,15 +22,16 @@ def home():
 
     return render_template("index.html")
 
-@app.route("/cocktails")
+@app.route("/cocktails", methods=['GET', 'POST'])
 def cocktails():
 
-    cocktail_db_response = mongo.db.recipe_db.find({}, {'_id': False})
-    recipes = []
-    for recipe in cocktail_db_response:
-        recipes.append(recipe)
-    # print(recipes)
-    return jsonify(recipes)
+    if request.method == 'GET':
+        cocktail_db_response = mongo.db.recipe_db.find({}, {'_id': False})
+        recipes = []
+        for recipe in cocktail_db_response:
+            recipes.append(recipe)
+        # print(recipes)
+        return jsonify(recipes)
 
 @app.route("/svgs")
 def svgs():
