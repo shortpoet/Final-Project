@@ -1,0 +1,103 @@
+,alcohol,color,name
+0,True,#e67c1c,cognac
+1,True,#71311b,créme de cacao (brown)
+2,False,#ffffff,fresh cream
+3,True,#e30004,campari
+4,True,#c53937,red vermouth
+5,False,#e3feff,soda water
+6,True,#efdc02,calvados
+7,True,#e7fff1,gin
+8,True,#fec72c,apricot brandy
+9,True,#ffeae4,maraschino
+10,False,#fff953,lemon juice
+11,True,#e9ffe8,bacardi carta blanca
+12,False,#deff62,lime juice
+13,False,#e24138,grenadine
+14,True,#ffffff,white rum
+15,True,#fefff3,triple sec
+16,True,#fafff7,old tom gin
+17,False,#fe9b06,orange bitters
+18,False,#fc214f,raspberry syrup
+19,False,#fffeee,egg white
+20,False,#fffab1,simple syrup
+21,False,#fedb04,peach bitters
+22,False,#6ece4e,mint leafs
+23,True,#e9ffe8,dry vermouth
+24,False,#fdffe8,sugar syrup
+25,True,#dc9f17,rye whiskey
+26,False,#f86a0c,angostura bitters
+27,False,#ffbc00,orange juice
+28,False,#ffef83,pineapple juice
+29,True,#c6ffa1,absinthe
+30,False,#ffffff,sugar cube
+31,False,#d9fbff,water
+32,True,#711802,dark rum
+33,True,#efb026,brandy
+34,True,#af0d00,red port
+35,False,#ffdd22,egg yolk
+36,True,#ea951f,drambuie
+37,False,#ffdf71,orange flower water
+38,False,#cb810d,vanilla extract
+39,False,#ff542b,peychaud’s bitters
+40,True,#fbfff8,vodka
+41,True,#deffe0,crème de menthe (white)
+42,True,#cc7123,bourbon whiskey
+43,True,#fffab9,prosecco
+44,False,#fe843b,peach puree
+45,True,#59290d,coffee liqueur
+46,False,#ff3b00,tomato juice
+47,False,#96291a,worcestershire sauce
+48,False,#e63c00,tabasco
+49,False,#d5a163,celery salt
+50,False,#341410,pepper
+51,True,#fff09c,cachaça
+52,False,#32d930,lime
+53,False,#ffffff,white sugar
+54,True,#fff7b0,champagne
+55,True,#fff9c5,citron vodka
+56,True,#dd8527,cointreau
+57,False,#f1251f,cranberry juice
+58,False,#622700,cola
+59,True,#d77924,amaretto
+60,True,#e5a20d,scotch
+61,True,#ffdf1a,galliano
+62,True,#fdfbfb,crème de cacao (white)
+63,True,#4db84a,crème de menthe (green)
+64,False,#fd7c5c,grapefruit juice
+65,False,#fff0a2,ginger ale
+66,True,#f6c62b,irish whiskey
+67,False,#2b0300,hot coffee
+68,True,#fffeb8,dry white wine
+69,True,#91001f,crème de cassis
+70,False,#d49c3d,brown sugar
+71,True,#fffeda,tequila
+72,False,#f6fdf0,gomme syrup
+73,True,#ffd556,orange curaćao
+74,False,#fcfff6,orgeat syrup
+75,False,#78e048,mint sprigs
+76,True,#fcffe7,white cuban rum
+77,True,#e6bd40,ginger beer
+78,False,#ffffff,powdered sugar
+79,False,#fefffa,coconut cream
+80,True,#fff7ec,kirsch
+81,False,#ff3b00,strawberry syrup
+82,True,#ffecc6,peach schnapps
+83,True,#ff0038,cherry liqueur
+84,True,#fff1bd,DOM Bénédictine
+85,True,#eaa600,grand marnier
+86,True,#ffd48f,baileys irish cream
+87,True,#722d12,kahlúa
+88,True,#ffd900,gold rum
+89,True,#44006a,blackberry liqueur
+90,False,#b3c800,olive juice
+91,True,#cf0034,raspberry liqueur
+92,False,#551f00,espresso
+93,True,#dfffc6,pisco
+94,True,#ff2455,aperol
+95,False,#ffde55,agave nectar
+96,True,#ffeb82,lillet blonde
+97,False,#fcff00,lemon twist
+98,False,#ffe200,honey
+99,False,#ffecb2,onion
+100,False,#f11e00,chili peppers
+101,False,#ffffff,salt
