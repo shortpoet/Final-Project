@@ -358,13 +358,21 @@ function drawGlass(endpoint, chosenRecipe) {
         var ratingGroup = glassGroup.append('g')
           .attr('transform', 'translate(38, 60)')
           .attr('id', 'ratingGroup')
-        var ratingForm = ratingGroup.append('form')
+        var ratingForm = instrDiv.append('form')
           .attr('method', 'POST')
+          .attr('action', '/' + endpoint)
+          .attr('name', 'ratingForm')
+          .attr('enctype', 'multipart/form-data')
           .append('input')
-          .attr('name', 'rating')
+          .attr('name', 'submitRating')
           .attr('value', '')
-          // .attr('type', 'submit')
+          .attr('type', 'text')
           .attr('id', 'submitRating')
+          .append('input')
+          .attr('name', 'submitRecipe')
+          .attr('value', '')
+          .attr('type', 'text')
+          .attr('id', 'submitRecipe')
 
         var ratingText = ratingGroup.append('text')
           .text(`Click to save ${rating} star rating`)
@@ -387,17 +395,12 @@ function drawGlass(endpoint, chosenRecipe) {
             //  write to database
             if (isSaveClicked === false) {
               console.log('write to db')
-              d3.select('#submitRating')
-                .attr('value', rating)
               var selectedRating = document.getElementById('submitRating')
-              var form = d3.select('#submitRating').node()
-              // var form = d3.select(this.parentNode).node()
-              console.log(d3.select(this.parentNode))
-              console.log(d3.select(this))
-              console.log(form)
-              form.submit()
+              var form = document.forms['ratingForm']
               console.log(selectedRating)
+              console.log(form)
               d3.select(this).style('fill', '#ffd055')
+              form.submit()
               isSaveClicked = true
             }
           })
@@ -444,8 +447,11 @@ function drawGlass(endpoint, chosenRecipe) {
             s.style('fill', '#ffd055')
             g.classed('selectedRating', true)
             d3.select('#ratingGroup').remove()
-            drawRating(g.attr('data-rating'))
-            console.log(g.attr('data-rating'))
+            var rating = g.attr('data-rating') 
+            drawRating(rating)
+            console.log(rating)
+            d3.select('#submitRating').attr('value', rating)
+            d3.select('#submitRecipe').attr('value', name)
           }
           else {
             isClicked = false
@@ -491,7 +497,11 @@ function drawGlass(endpoint, chosenRecipe) {
             t.style('fill', '#ffd055')
             g.classed('selectedRating', true)
             d3.select('#ratingGroup').remove()
-            drawRating(g.attr('data-rating'))
+            var rating = g.attr('data-rating') 
+            drawRating(rating)
+            console.log(rating)
+            d3.select('#submitRating').attr('value', rating)
+            d3.select('#submitRecipe').attr('value', name)
           }
           else {
             isClicked = false
@@ -543,7 +553,11 @@ function drawGlass(endpoint, chosenRecipe) {
             u.style('fill', '#ffd055')
             g.classed('selectedRating', true)
             d3.select('#ratingGroup').remove()
-            drawRating(g.attr('data-rating'))
+            var rating = g.attr('data-rating') 
+            drawRating(rating)
+            console.log(rating)
+            d3.select('#submitRating').attr('value', rating)
+            d3.select('#submitRecipe').attr('value', name)
           }
           else {
             isClicked = false
@@ -601,7 +615,11 @@ function drawGlass(endpoint, chosenRecipe) {
             v.style('fill', '#ffd055')
             g.classed('selectedRating', true)
             d3.select('#ratingGroup').remove()
-            drawRating(g.attr('data-rating'))
+            var rating = g.attr('data-rating') 
+            drawRating(rating)
+            console.log(rating)
+            d3.select('#submitRating').attr('value', rating)
+            d3.select('#submitRecipe').attr('value', name)
           }
           else {
             isClicked = false
@@ -666,7 +684,11 @@ function drawGlass(endpoint, chosenRecipe) {
             w.style('fill', '#ffd055')
             g.classed('selectedRating', true)
             d3.select('#ratingGroup').remove()
-            drawRating(g.attr('data-rating'))
+            var rating = g.attr('data-rating') 
+            drawRating(rating)
+            console.log(rating)
+            d3.select('#submitRating').attr('value', rating)
+            d3.select('#submitRecipe').attr('value', name)
           }
           else {
             isClicked = false

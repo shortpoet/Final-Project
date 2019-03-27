@@ -33,6 +33,23 @@ def cocktails():
         # print(recipes)
         return jsonify(recipes)
 
+    if request.method == 'POST':
+        form = request.form
+        rating = request.form.get('submitRating')
+        recipe = request.form.get('submitRecipe')
+        print("====================")
+        print(f"REQUEST: {request}")
+        print(f"FORM: {form}")
+        print(f"RATING: {rating}")
+        print(f"RECIPE: {recipe}")
+        print(f"DATE: {dt.now()}")
+        print("====================")
+        this_rating = {}
+        this_rating['date_time'] = dt.now()
+        this_rating['rating'] = rating
+        mongo.db.recipe_dump.update_one({'name': recipe}, {"$set": {'rating': this_rating}}, upsert=True)
+        return redirect(url_for("glasses"))
+
 @app.route("/svgs")
 def svgs():
 
