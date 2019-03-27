@@ -29,6 +29,13 @@ def cocktails():
         cocktail_db_response = mongo.db.recipe_db.find({}, {'_id': False})
         recipes = []
         for recipe in cocktail_db_response:
+            print(recipe)
+            ratings = []
+            for k, v in recipe['rating'].items():
+                if k == 'rating':
+                    ratings.append(int(v))
+            average = round(sum(ratings)/len(ratings))
+            recipe['avg_rating'] = average
             recipes.append(recipe)
         # print(recipes)
         return jsonify(recipes)
@@ -50,15 +57,15 @@ def cocktails():
         mongo.db.recipe_dump.update_one({'name': recipe}, {"$set": {'rating': this_rating}}, upsert=True)
         return redirect(url_for("glasses"))
 
-@app.route("/svgs")
+@app.route("/liquid")
 def svgs():
 
-    svg_db_response = mongo.db.glass_svgs.find({}, {'_id': False})
-    svgs = []
-    for svg in svg_db_response:
-        svgs.append(svg)
+    liquids_db_response = mongo.db.liquid_colors.find({}, {'_id': False})
+    liquids = []
+    for liquid in liquids_db_response:
+        liquids.append(liquid)
     # print(recipes)
-    return jsonify(svgs)
+    return jsonify(liquids)
 
 @app.route("/table")
 def table():

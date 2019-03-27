@@ -1,13 +1,5 @@
 
 var endpoint = 'cocktails'
-var glass_endpoint = 'svgs'
-
-
-var chartDiv = document.getElementById("glasses");
-var width = 720;
-var height = 720;
-// var width = chartDiv.clientWidth;
-// var height = chartDiv.clientHeight;
 
 // Define SVG area dimensions
 var svgWidth = 720;
@@ -31,8 +23,6 @@ var svg = d3.select("#glasses")
   .attr("width", glassWidth)
   .attr("height", glassHeight)
   .attr('viewBox', '0 -5 110 911')
-
-
 
 function drawInput(endpoint) {
   d3.json(endpoint).then(function(cocktails) {
@@ -92,6 +82,7 @@ function drawInput(endpoint) {
         console.log(chosenIngred)
         drawTable(endpoint, chosenIngred, 'ingredient')
       })
+
     var generate = d3.select('#generate').append('button')
       .attr('type', 'submit')
       .attr('class', 'btn btn-default')
@@ -100,6 +91,45 @@ function drawInput(endpoint) {
   })
 }
 drawInput(endpoint)
+
+function drawMultiple() {
+  d3.json('liquid').then(function(liquids_colors) {
+    var liquids = []
+    liquids_colors.forEach(x => {
+      Object.entries(x).forEach(([k,v]) => {
+       if ( k === 'liquids') {
+        liquids.push(v)
+       }
+      })
+    })
+    console.log(liquids)
+    var multiple = d3.select('#multipleSearch').append('select')
+      .attr('multiple', 'multiple')
+      .attr('name', 'liquids[]')
+      .attr('class', 'js-example-basic-multiple')
+      .style('width', '100%')
+    var options = multiple.selectAll('option').data(liquids)
+      .enter()
+      .append('option')
+      .attr('value', d => d)
+      .attr('id', d => d)
+      .text(d => d)
+    var sel_data = []
+    var i = 0
+    liquids.forEach(liquid => {
+      var this_liq = {'id': i, 'text': liquid}
+      sel_data.push(this_liq)
+      i++
+    })
+    $(document).ready(function(){
+      $("#multipleSearch").select2({
+        data: sel_data,
+        allowClear: true
+      })
+    })
+  })
+}
+// drawMultiple()
 
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
@@ -211,10 +241,10 @@ function drawGlass(endpoint, chosenRecipe) {
       // console.log(maskTopMargin, maskHeight, ings)
       var volume = recipe[0]['total_volume']
       var name = recipe[0]['name']
-
+      var avg_rating = recipe[0]['avg_rating']
       
       var defs = svg.append('defs')
-        // .append('g')
+        .append('g')
         .attr('id', 'def')
 
       var clip = defs.append('clipPath').attr('id', 'clip')
@@ -226,17 +256,15 @@ function drawGlass(endpoint, chosenRecipe) {
       var starDef = svg.append('defs')
         .append('g')
         .attr('id', 'starDef')
-      // glassGroup
         .append('svg')
         .attr('height', 25)
         .attr('width', 23)
-        .attr('viewBox', '0 0 26 26')
+        .attr('viewBox', '0 0 180 180')
         .attr('class', 'star rating')
         .append('polygon')
         .attr('class', 'star')
         .attr('points', "9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78")
         .style('fill-rule', 'nonzero')
-        // .style('fill', 'yellow')
         
       // Append a group area, then set its margins
       var glassGroup = svg.append("g").attr('id', 'glass_group')
@@ -246,18 +274,92 @@ function drawGlass(endpoint, chosenRecipe) {
         .attr('transform', 'translate(38, -4)')
         .attr('id', 'nameGroup')
       var nameText = nameGroup.append('text')
-        // .append('text')
         .text(`${name}`)
         .style('font-size', 5)
         .style('fill', 'purple')
-        .style('text-align', 'center') 
+        .style('text-align', 'center')
+      var nameRatingGroup = nameGroup.append('g')
+        .attr('id', 'nameRatingGroup')
+        .attr('transform', 'translate(2.5, 0)')
+        .attr('class', 'stars')
+
+      switch (avg_rating) {
+        case 1:
+          var nameStars1 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(8, 2)')
+            .attr('id', 'name-stars1')
+            .attr("xlink:href","#starDef")
+          break
+        case 2:
+          var nameStars1 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(8, 2)')
+            .attr('id', 'name-stars1')
+            .attr("xlink:href","#starDef")
+          var nameStars2 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(13, 2)')
+            .attr('id', 'name-stars2')
+            .attr("xlink:href","#starDef")
+          break
+        case 3:
+          var nameStars1 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(8, 2)')
+            .attr('id', 'name-stars1')
+            .attr("xlink:href","#starDef")
+          var nameStars2 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(13, 2)')
+            .attr('id', 'name-stars2')
+            .attr("xlink:href","#starDef")
+          var nameStars3 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(18, 2)')
+            .attr('id', 'name-stars3')
+            .attr("xlink:href","#starDef")
+          break
+        case 4:
+          var nameStars1 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(8, 2)')
+            .attr('id', 'name-stars1')
+            .attr("xlink:href","#starDef")
+          var nameStars2 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(13, 2)')
+            .attr('id', 'name-stars2')
+            .attr("xlink:href","#starDef")
+          var nameStars3 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(18, 2)')
+            .attr('id', 'name-stars3')
+            .attr("xlink:href","#starDef")
+          var nameStars4 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(23, 2)')
+            .attr('id', 'name-stars4')
+            .attr("xlink:href","#starDef")
+          break
+        case 5:
+          var nameStars1 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(8, 2)')
+            .attr('id', 'name-stars1')
+            .attr("xlink:href","#starDef")
+          var nameStars2 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(13, 2)')
+            .attr('id', 'name-stars2')
+            .attr("xlink:href","#starDef")
+          var nameStars3 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(18, 2)')
+            .attr('id', 'name-stars3')
+            .attr("xlink:href","#starDef")
+          var nameStars4 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(23, 2)')
+            .attr('id', 'name-stars4')
+            .attr("xlink:href","#starDef")
+          var nameStars5 = nameRatingGroup.append('use')
+            .attr('transform', 'translate(28, 2)')
+            .attr('id', 'name-stars5')
+            .attr("xlink:href","#starDef")
+          break
+      }      
 
       var glassPath = glassGroup.selectAll('path').data(recipe)
         .enter()
         .append('path')
         .attr('d', d => d.path)
-        // .attr('height', .5 * glassHeight)
-        // .attr('width', .5 * glassWidth)
         .attr('fill', 'none')
         .attr('stroke', '#000')
         .attr('stroke-width', '.265')
@@ -272,25 +374,21 @@ function drawGlass(endpoint, chosenRecipe) {
         .attr('x', 0)
         .attr('y', maskTopMargin)
         .attr('height', (d,i) => {
-          // console.log(y)
           this_arr = ingVals.slice(0, ingVals.length + y)
-          // console.log(this_arr)
           this_arr = this_arr.map(x=>x/volume*maskHeight)
-          // console.log(this_arr)
           y -= 1
           return this_arr.reduce((a,b)=> a + b, 0)
         })
         .attr('width', 60)
         .attr('clip-path', 'url(#clip)') 
         .style('fill', (d,i) => `rgb(100, ${(i+1)*60}, 100)`)
+
       var ingrTextGroup = ingrRectGroup.append('g')
         .attr('id', 'ingrTextGroup')
         .attr("transform", `translate(${margin.left + 50}, ${margin.top})`);
-        // .attr("transform", `translate(10, 0)`);
+
       var k = 0
       var rectHeights = d3.selectAll('rect').nodes().map(x=>x.getBBox().height).reverse()
-
-      // console.log(rectHeights)
       var ingrText = ingrTextGroup.selectAll('text').data(ings)
         .enter()
         .append('text')
@@ -323,23 +421,29 @@ function drawGlass(endpoint, chosenRecipe) {
         .style("stroke-width", .75);
     
       var instructions = recipe[0]['instructions']
-      // console.log(instructions)
       instructions = instructions.split('.').slice(0, -1)
-      // console.log(instructions)
-
       var instrDiv = d3.select('#instructions')
         .style('border', '5px solid black')
         .attr("transform", `translate(0, -5px)`)
         // .style('height', 480 +'px')
-        .append('g')
+      instrGroup = instrDiv.append('g')
         .attr('id', 'instrGroup')
-        .append('ul')
+      instrGroup.append('br')
+      instrGroup.append('hr')
+      instrGroup.append('hr')
+      instrGroup.append('br')
+      instrGroup.append('h5')
+        .text('Instructions:')
+        .style('text-align', 'center')
+        .style('color', 'blueviolet')
+      instrGroup.append('ul')
+        .style('padding', '35px 0px 0px 10px')
         .selectAll('li')
         .data(instructions)
         .enter()
         .append('li')
         .text(d=>d)
-        .style('font-size', 2)
+        .style('font-size', 16 + 'px')
         .style('color', 'green')
         .style('text-align', 'center')
         .classed('instrText', true)
@@ -352,7 +456,6 @@ function drawGlass(endpoint, chosenRecipe) {
         .attr('data-stars', 1)
       
       var isSaveClicked = false
-
       function drawRating(rating) {
         console.log('drawRatingggggggggggggggggg')
         var ratingGroup = glassGroup.append('g')
@@ -407,7 +510,6 @@ function drawGlass(endpoint, chosenRecipe) {
       }
 
       var isClicked = false
-
       var dataStars1 = starGroup.append('g')
         .attr('transform', 'translate(0, 75)')
         .append('svg')
@@ -694,15 +796,15 @@ function drawGlass(endpoint, chosenRecipe) {
         .attr('id', 'starInstrDiv')
         .append('text')
         .text('Click star to set rating -- Click again to unset')  
-      
+      // styleImportedSVG()
     })
 }	
 
 function styleImportedSVG () {
   d3.select('svg')
     .on('mouseover', function() {
-      // console.log('mouseover');
-      // console.log('this', this);
+      console.log('mouseover');
+      console.log('this', this);
       d3.selectAll('path')
         .style({
           'fill-opacity':   0.1,
@@ -710,7 +812,7 @@ function styleImportedSVG () {
         })
     })
     .on('mouseout', function() {
-      // console.log('mouseout');
+      console.log('mouseout');
       d3.selectAll('path')
         .style({
           'fill-opacity':   1,
@@ -719,15 +821,11 @@ function styleImportedSVG () {
     })
 }
 function drawTable(endpoint, chosenParam, paramType) {
-	// console.log(endpoint)
 	d3.json(endpoint).then(function(recipe_dump) {
-    
     var chosenRecipes = []
     if (paramType === 'ingredient') {
       var recipeFilter = recipe_dump.filter(recipe => {
         recipe['ingredients'].forEach(ingredient => {
-          // console.log(ingredient)
-          // if (ingredient !== undefined && ingredient.indexOf(chosenIngred) !== -1) {
           if (ingredient.includes(chosenParam)) {
             chosenRecipes.push(recipe)
             return true;
@@ -737,16 +835,10 @@ function drawTable(endpoint, chosenParam, paramType) {
     }
     else if (paramType === 'recipe') {
       var chosenRecipes = recipe_dump.filter(datum => datum.name == chosenParam)
-      // chosenRecipes.push(recipe)
-      // console.log(recipe)  
     }
-    
-		// console.log(endpoint)
     console.log(chosenRecipes)
 		var headers = d3.keys(recipe_dump[0])
-		// console.log(headers)
 		headers = headers.slice(9,10).concat(headers.slice(2,6))
-		// console.log(headers)
 		var dataTable = d3.select('#table').append('table').attr('class', 'datatable table table-striped');
 		var header = dataTable.append('thead').selectAll('th').data(headers).enter()
 			.append('th')

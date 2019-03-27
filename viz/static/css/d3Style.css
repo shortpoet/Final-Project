@@ -5,9 +5,16 @@
 .stars {
   cursor: pointer;
 }
+#ratingGroup {
+  cursor: pointer;
+}
 
 .stars .star polygon {
   fill: #d8d8d8;
+}
+
+ul {
+  padding: 10 0 0 0;
 }
 
 /* .stars:hover .star polygon {
