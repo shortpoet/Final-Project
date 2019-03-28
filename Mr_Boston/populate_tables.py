@@ -1,6 +1,32 @@
 from credentials import user, password, rds_host
 import pymysql
 import pandas as pd
+from boston_functions import *
+import re
+import numpy as np
+from liquid import liquids
+from garnish import garnishes
+
+data = pd.read_csv("./mr-boston-all-glasses.csv")
+
+data = data[data.loc[:, "glass-size"].notna()]
+
+valid_units = ["oz", "tsp", "splash", "dash"]
+
+fill_liquid = ["ginger ale", "carbonated water", "cola", "water", "chilled champagne", "soda water", 
+               "club soda", "ginger ale or soda water", "lemon-lime soda", "ginger beer", "bitter lemon soda",
+               "apple juice", "orange juice"]
+
+invaild_ingredients = ['chopped', 'cut in half', 'cut in halves', 'cut into halves', 'flamed', 'hulled', 'long', 'skinned',
+                       'whipped', "preferably b.a. reynold's", 'preferably jamaican', 'preferably japanese', 
+                       'preferably pedro ximenez', "such as bittermen's elemakule", 'such as demerara', 
+                       'such as islay or skye', 'such as nasturtium']
+
+ingredient_indicies = range(3, 14)
+
+all_recipies, measures = get_cocktail_recipies(data, ingredient_indicies, liquids, garnishes, invaild_ingredients, valid_units)
+
+categories = list(set(data.iloc[:, 1])) + ["AI Instant Classic"]
 
 liquid_colors = pd.read_csv("./LIquid_Colors_Final.csv")
 
@@ -12,7 +38,7 @@ def populate_liquid_table(liquid_df):
         liquid = liquid_df.iloc[row, 0]
         hex_color = liquid_df.iloc[row, 1]
         print(liquid, hex_color)
-        sql = f"INSERT INTO Liquids (Liquid_Name, Color) VALUES ('{(liquid)}', '{(hex_color)}');"
+        sql = f"INSERT INTO Liquids (Liquid_Name, Color) VALUES ('{liquid}', '{hex_color}');"
         cursor.execute(sql)
     conn.commit()
     cursor.execute("SELECT * FROM Liquids")
@@ -22,15 +48,35 @@ def populate_liquid_table(liquid_df):
 
 # populate_liquid_table(liquid_colors)
 
-garnish_table_sql = "CREATE TABLE Garnishes ( \
-                        Garnish_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT \
-                        , Garnish_Name VARCHAR(80) \
-                        );"
+def populate_garnish_table(garnishes):
+    conn = pymysql.connect(rds_host, user=user, password=password, connect_timeout=50)
+    cursor = conn.cursor()
+    cursor.execute('USE cocktailproject')
+    for garnish in garnishes:
+        sql = f"INSERT INTO Garnishes (Garnish_Name) VALUES ('{garnish}');"
+        cursor.execute(sql)
+    conn.commit()
+    cursor.execute("SELECT * FROM Garnishes")
+    data = cursor.fetchall()
+    print(data)
+    conn.close()
 
-category_table_sql = "CREATE TABLE Categories ( \
-                        Category_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT \
-                        , Category_Name VARCHAR(80) \
-                        );"
+# populate_garnish_table(garnishes)
+
+def populate_category_table(categories):
+    conn = pymysql.connect(rds_host, user=user, password=password, connect_timeout=50)
+    cursor = conn.cursor()
+    cursor.execute('USE cocktailproject')
+    for category in categories:
+        sql = f"INSERT INTO Categories (Category_Name) VALUES ('{category}');"
+        cursor.execute(sql)
+    conn.commit()
+    cursor.execute("SELECT * FROM Categories")
+    data = cursor.fetchall()
+    print(data)
+    conn.close()
+
+populate_category_table(categories)
 
 glass_table_sql = "CREATE TABLE Glasses ( \
                     Glass_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT \
@@ -76,9 +122,6 @@ rating_table_sql = "CREATE TABLE Ratings ( \
                 );"
 
 
-tables_to_create = [liquid_table_sql, garnish_table_sql, category_table_sql, 
-                    glass_table_sql, cocktail_table_sql, liquid_instructions_table_sql, 
-                    garnish_instructions_table_sql, rating_table_sql]
 
 # print("connecting")
 # # def create_tables():

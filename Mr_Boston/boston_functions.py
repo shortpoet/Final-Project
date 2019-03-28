@@ -132,6 +132,7 @@ def get_cocktail_recipies(dataframe, ingredient_indicies, liquid_list, garnish_l
                 
             if valid_measure:
                 measures.append(measure)
+                
             else:
                 measure = "fill"
 
