@@ -34,6 +34,7 @@ def populate_liquid_table(liquid_df):
     conn = pymysql.connect(rds_host, user=user, password=password, connect_timeout=50)
     cursor = conn.cursor()
     cursor.execute('USE cocktailproject')
+    cursor.execute('')
     for row in range(len(liquid_df)):
         liquid = liquid_df.iloc[row, 0]
         hex_color = liquid_df.iloc[row, 1]
@@ -46,7 +47,7 @@ def populate_liquid_table(liquid_df):
     print(data)
     conn.close()
 
-populate_liquid_table(liquid_colors)
+# populate_liquid_table(liquid_colors)
 
 def populate_garnish_table(garnishes):
     conn = pymysql.connect(rds_host, user=user, password=password, connect_timeout=50)
