@@ -29,7 +29,7 @@ def cocktails():
         cocktail_db_response = mongo.db.recipe_db.find({}, {'_id': False})
         recipes = []
         for recipe in cocktail_db_response:
-            print(recipe)
+            # print(recipe)
             ratings = []
             for k, v in recipe['rating'].items():
                 if k == 'rating':
