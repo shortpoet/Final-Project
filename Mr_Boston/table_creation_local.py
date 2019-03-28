@@ -72,6 +72,9 @@ print("connecting")
 # def create_tables():
 conn = pymysql.connect(rds_host, user=user, password=password, connect_timeout=50)
 cursor = conn.cursor()
+# create database
+sql = "CREATE DATABASE IF NOT EXISTS cocktailproject"
+cursor.execute(sql)
 cursor.execute('USE cocktailproject')
 cursor.execute("SHOW TABLES;")
 tables = cursor.fetchall()
