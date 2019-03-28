@@ -35,6 +35,7 @@ cocktail_table_sql = "CREATE TABLE Cocktails ( \
                         , Cocktail_Name VARCHAR(80) \
                         , Glass_ID INT \
                         , Category_ID INT \
+                        , Instructions VARCHAR(500) \
                         , FOREIGN KEY (Glass_ID) REFERENCES Glasses(Glass_ID) \
                         , FOREIGN KEY (Category_ID) REFERENCES Categories(Category_ID) \
                         );"
