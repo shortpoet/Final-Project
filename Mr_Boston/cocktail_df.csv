@@ -1,0 +1,977 @@
+,cocktail_name,glass_id,category_ids
+0,Gauguin,1,8
+1,Fort Lauderdale,1,8
+2,Apple Pie,1,9
+3,Cuban Cocktail No. 1,4,8
+4,Cool Carlos,5,8
+5,John Collins,5,1
+6,Cherry Rum,4,8
+7,Casa Blanca,4,8
+8,Caribbean Champagne,9,8
+9,Amber Amour,5,9
+10,The Joe Lewis,4,1
+11,Bacardi Cocktail,4,8
+12,Apple Pie No. 1,4,8
+13,Yolanda,4,8
+14,Yellow Rattler,4,8
+15,Why Not?,4,8
+16,Amaretto Stinger,4,9
+17,What The Hell,1,8
+18,Webster Cocktail,4,8
+19,Union Jack Cocktail,4,8
+20,Jocose Julep,5,1
+21,Trinity Cocktail,4,8
+22,Three Stripes Cocktail,4,8
+23,Tanq-A-Rita,4,8
+24,Amaretto Sour,25,9
+25,Tailspin Cocktail,4,8
+26,Sweet Patootie Cocktail,4,8
+27,Sunshine Cocktail,4,8
+28,Spring Feeling Cocktail,4,8
+29,Sphinx Cocktail,4,8
+30,Jitterbug Sour,4,1
+31,Southern Gin Cocktail,4,8
+32,Society Cocktail,4,8
+33,Snyder,4,8
+34,Smiler Cocktail,4,8
+35,Smile Cocktail,4,8
+36,Amaretto Rose,5,9
+37,Sand-Martin Cocktail,4,8
+38,Irish Whiskey Highball,39,1
+39,Japanese,4,7
+40,Roselyn Cocktail,4,8
+41,Resolute Cocktail,4,8
+42,Racquet Club Cocktail,4,8
+43,Amaretto And Cream,4,9
+44,Pollyanna Cocktai,4,8
+45,Plaza Cocktail,4,8
+46,Irish Whiskey Cocktail,4,1
+47,Absinthe Special Cocktail,4,9
+48,Nineteenth Hole,4,8
+49,Montreal Club Bouncer,1,8
+50,Monte Carlo Imperial Highball,39,8
+51,Irish Shillelagh,52,1
+52,Melon Cocktail,4,8
+53,Mamie's Sister,5,8
+54,Irish Rickey,39,1
+55,Maiden's Prayer,4,8
+56,Lone Tree Cocktail,4,8
+57,London Buck,39,8
+58,Leap Frog Highball,39,8
+59,Incider Cocktail,1,1
+60,Kup's Indispensable Cocktail,4,8
+61,Knock-Out Cocktail,4,8
+62,K. G. B. Cocktail,4,8
+63,Imperial Fizz,39,1
+64,Jeyplak Cocktail,4,8
+65,H. P. W. Cocktail,4,8
+66,I.A.P.,5,1
+67,Hotel Plaza Cocktail,4,8
+68,Hoffman House Cocktail,4,8
+69,Hawaiin Cocktail,4,8
+70,White Russian,1,11
+71,Greyhound,39,8
+72,Green Devil,1,8
+73,Greenback,1,8
+74,Grapefruit Cocktail,4,8
+75,Hotel D'alsace,1,1
+76,Jamaica Granito,5,7
+77,Gin Sling,1,8
+78,Gin Milk Punch,5,8
+79,Horse's Neck (With A Kick),5,1
+80,Gin and It,4,8
+81,Gin Cocktail,4,8
+82,West Side,4,11
+83,Gimlet ,4,8
+84,Free Silver,5,8
+85,Frankenjack Cocktail,4,8
+86,Fog Horn,39,8
+87,Flying Dutchman,1,8
+88,Hoot Mon Cocktail,4,1
+89,Fifty-Fifty Cocktail,4,8
+90,Favorite Cocktail,4,8
+91,Farmer's Cocktail,4,8
+92,Warsaw Cocktail,4,11
+93,Emerald Isle Cocktail,4,8
+94,Du Barry Cocktail,4,8
+95,Dry Martini (5-to-1),4,8
+96,Dixie Cocktail,4,8
+97,Delmonico No. 2,4,8
+98,Hole-In-One,4,1
+99,Vodka Stinger,4,11
+100,Caruso,4,8
+101,Bulldog Highball,39,8
+102,Brown Cocktail,4,8
+103,Bronx Terrace Cocktail,4,8
+104,Bronx Cocktail (Dry),4,8
+105,Hill Dog,4,1
+106,Blue Devil Cocktail,4,8
+107,Blue Canary,4,8
+108,Blue Bird,4,8
+109,Bloodhound Cocktail,4,8
+110,Billy Taylor,5,8
+111,Bijou Cocktail,4,8
+112,Bermuda Rose ,4,8
+113,Vodka Sour,4,11
+114,Apricot Anisette Collins,5,8
+115,Alexander's Sister Cocktail,4,8
+116,Highland Cooler,5,1
+117,Alexander Cocktail No. 1,4,8
+118,Adam and Eve,4,8
+119,Vodka Sling,1,11
+120,Jack Rose Cocktail,4,7
+121,Tempter Cocktail,4,8
+122,Special Rough Cocktail,4,8
+123,Vodka Grasshopper,4,11
+124,Singapore Sling,5,8
+125,Saratoga Cocktail,4,8
+126,High Cotton,4,1
+127,Polonaise,1,8
+128,Vodka Gimlet,4,11
+129,Merry Widow Cocktail No. 2,4,8
+130,Lugger,4,8
+131,Jamaica Hop,4,8
+132,Hebrides,5,1
+133,Hennessy Martini,4,8
+134,Vodka Daisy,135,11
+135,Heavenly Dram,4,1
+136,Classic Cocktail,1,8
+137,Cherry Sling,1,8
+138,Cherry Fizz,39,8
+139,Vodka Cooler,5,11
+140,Carrol Cocktail,4,8
+141,Button Hook Cocktail,4,8
+142,Bull's Eye,39,8
+143,Brantini,1,8
+144,Heather's Kiss,4,1
+145,Brandy Squirt,39,8
+146,Brandy and Soda,5,8
+147,Brandy Milk Punch,5,8
+148,Vodka Collins,5,11
+149,Brandy Crusta Cocktail,4,8
+150,Heather Blush,9,1
+151,Jack Maples,4,7
+152,Brandy Alexander,4,8
+153,Vodka and Tonic,39,11
+154,Apricot Cocktail,4,8
+155,Alexander Cocktail No. 2,4,8
+156,After Dinner Cocktail,4,8
+157,Harvest Moon,4,1
+158,Red Raider,4,8
+159,Vodka and Apple Juice,39,11
+160,Mint Julep (Southern Style),5,8
+161,Limestone,39,8
+162,Grounds For Divorce,4,1
+163,Gentleman's Cocktail,39,8
+164,Dixie Julep,5,8
+165,Victory Collins,5,11
+166,Buddy's Favorite,39,8
+167,Bourbon On The Rocks,1,8
+168,Bourbon Cobbler,1,8
+169,Bourbon and Water,1,8
+170,Greenpoint,4,1
+171,Yellowjacket,1,10
+172,Velvet Peach Hammer,1,11
+173,Grandfather,4,1
+174,Goldrush,1,1
+175,Sake Martini,4,8
+176,Godfather,1,1
+177,Jack-In-The-Box,4,7
+178,Saronno,4,8
+179,Saronno Colada (Nutty Colada),5,8
+180,Saronno Mist,1,8
+181,Saronno Rose,5,8
+182,Gilchrist,4,1
+183,Frisco Sour,25,1
+184,Fratelli Cocktail,4,1
+185,Francis The Mule,4,1
+186,Fox River Cocktail,4,1
+187,Flying Scotchman,4,1
+188,The Final Ward,4,1
+189,Martini ,4,8
+190,Fancy Whiskey,4,1
+191,Mandarine Sour,192,8
+192,Mandarine Mist,1,8
+193,Underneath The Mango Tree,5,11
+194,Fancy-Free Cocktail,4,1
+195,Honeymoon Cocktail,4,7
+196,Twister,5,11
+197,Everybody's Irish Cocktail,4,1
+198,Trident,4,11
+199,Top Banana,1,11
+200,Emperor Norton's Mistress,1,1
+201,Easterner,4,1
+202,Toasted Drop,4,11
+203,Eastern Sour,39,1
+204,K. C. B. Cocktail,4,8
+205,Easter Elchies,4,1
+206,Dufftown Flip,207,1
+207,Harvard Cooler,5,7
+208,The Duboudreau Cocktail,4,1
+209,Irish Whisky ,4,8
+210,Dubliner,4,1
+211,Double Standard Sour,4,1
+212,Dixie Whiskey Cocktail,4,1
+213,Hill Billy Highball,39,8
+214,The Titian,4,11
+215,Tiger Tanaka,4,11
+216,Grenadine Rickey,39,8
+217,Thyme Collins,5,11
+218,Tabby Cat,4,11
+219,God Child,9,8
+220,Sweet Maria,4,11
+221,Dirty Harry,4,1
+222,Harvard Cocktail,4,7
+223,Gin and Milk Punch,5,8
+224,Surf Rider,39,11
+225,Dinah Cocktail,4,1
+226,The Summer Of Love,4,11
+227,Devil's Soul,4,1
+228,Deshler,9,1
+229,T.N.T. No. 1,4,8
+230,Stupid Cupid,4,11
+231,Derby,4,1
+232,Stockholm 75,4,11
+233,The Delmarva Cocktail,4,1
+234,Sputnik,235,11
+235,Gotham,1,7
+236,De La Louisiane,4,1
+237,The Debonair,4,1
+238,Soviet,1,11
+239,Daisy Dueller,39,1
+240,Sonic Blaster,5,11
+241,Creole Lady,4,1
+242,Rum Coooler,5,8
+243,Siberian Sleighride,207,11
+244,Cotton Club Flip,1,1
+245,Golden Dawn,1,7
+246,Sidecar,4,8
+247,Shalom,1,11
+248,Commodore Cocktail,9,1
+249,Sea Breeze,39,11
+250,Screwdriver,39,11
+251,Coffee Old-Fashioned,1,1
+252,Salty Dog,39,11
+253,Dr. Cook,235,8
+254,Chi-Town Flip,5,1
+255,Chef's Pain,4,11
+256,Sampan Shipwreck A,4,11
+257,Chas,4,1
+258,Goat's Delight,4,7
+259,Russian Bear Cocktail,4,11
+260,Character Development,4,1
+261,Ruby Red,4,11
+262,Chaplin,4,1
+263,Rouxby Red,4,11
+264,Rosemary Clementine Sparkle,4,11
+265,Chapel Hill,4,1
+266,Robin's Nest,4,11
+267,Chancellor Cocktail,4,1
+268,Carre Reprise,1,1
+269,Gilroy Cocktail,4,7
+270,Redhead Martini,4,11
+271,Red Apple,4,11
+272,Canal Street Daisy,5,1
+273,Canadian Cocktail,4,1
+274,Purple Ruby,4,11
+275,Canadian Cherry,1,1
+276,Orange Smile,235,8
+277,Purple Passion Iced Tea,39,11
+278,Canadian Breeze,1,1
+279,Purple Passion,5,11
+280,Cameron's Kick Cocktail,4,1
+281,Georgia Mint Julep,5,7
+282,California Lemonade,5,1
+283,Boston Side Car ,4,8
+284,Cablegram,39,1
+285,Bull And Bear,4,1
+286,Brooklyn,4,1
+287,Brighton Punch,5,1
+288,Bourbon Renewal,1,1
+289,Bourbon Highball,39,1
+290,Bourbon And Elder,1,1
+291,Bourbon Crusta,4,1
+292,Bourbon Cooler,1,1
+293,Froupe Cocktail,4,7
+294,Bourbon A La Creme,1,1
+295,The Bone,296,1
+296,Bobby Burns Cocktail,4,1
+297,White Cargo Cocktail,1,8
+298,Blood and Sand,4,1
+299,The Blinker,4,1
+300,Pike's Peak Cooler,5,8
+301,Blarney Stone Cocktail,4,1
+302,Pacman,5,8
+303,Lemonade (Golden),5,8
+304,Black Hawk,4,1
+305,Lemonade (Egg),5,8
+306,Bensonhurst,4,1
+307,The Beautiful Day,1,1
+308,French Quarter,4,7
+309,Creme de Gin Cocktail,4,8
+310,Creamy Screwdriver,5,8
+311,Creamy Orange,4,8
+312,Creamsicle,5,8
+313,Cowboy Cocktail,4,8
+314,Beals Cocktail,4,1
+315,Coronation Cocktail,4,8
+316,Cornell Cocktail,4,8
+317,Combo,1,8
+318,Basin Street,4,1
+319,Cole's Raspberry Cream,9,8
+320,Cognac Coupling,1,8
+321,Coffee Sour,192,8
+322,Coffee Flip,192,8
+323,Coffee Cocktail,192,8
+324,Purple Mask,4,11
+325,Clove Cocktail,4,8
+326,Clover Leaf Cocktail,4,8
+327,Clover Club Cocktail,4,8
+328,Priority Cocktail,4,11
+329,Clamato Cocktail,1,8
+330,Cider Eggnog,5,8
+331,Chocolate Soldier,4,8
+332,Chocolate Flip,192,8
+333,Chocolate Cocktail,192,8
+334,Chicago Fizz,39,8
+335,Pretty In Pink,5,11
+336,Cherry Wine Cocktail,4,8
+337,Cherry Flip,192,8
+338,Cherry Cooler,5,8
+339,Polynesian Cocktail,4,11
+340,Chateau Briand's Rum Cow,5,8
+341,Champagne Velvet,9,8
+342,Pink Pussycat,39,11
+343,Back Porch Swizzle,39,1
+344,Canadian Pineapple,1,8
+345,Calm Voyage,9,8
+346,Pink Lemonade,5,11
+347,Caledonia,1,8
+348,Cafe De Paris Cocktail,4,8
+349,Aztec's Mark,4,1
+350,Fontainebleau Special,4,7
+351,Suntan,39,8
+352,Sunburn,39,8
+353,Suissesse Cocktail,4,8
+354,Strawberry Sunries,39,8
+355,Autumn Leaves,1,1
+356,Pickled Pink,4,11
+357,Aquarius,1,1
+358,Soul Kiss Cocktail,4,8
+359,Pickled Martini,4,11
+360,Sloe Gin Flip,192,8
+361,Angel's Share,4,1
+362,Silver Stallion Fizz,39,8
+363,Silver King Cocktail,4,8
+364,American Trilogy,1,1
+365,Silver Fizz,39,8
+366,Sherry Twist Cocktail,4,8
+367,Sherry Sangaree,1,8
+368,Sherry Milk Punch,5,8
+369,Petit Zinc,4,11
+370,Sherry Flip,192,8
+371,Sherry-and-Egg Cocktail,4,8
+372,Americana,5,1
+373,Allegheny,4,1
+374,Sevilla Cocktail,192,8
+375,September Morn Cocktail,4,8
+376,Peach Iced Tea,5,11
+377,Fantasio Cocktail,4,7
+378,Scotch Bird Flyer,9,8
+379,Algonquin,4,1
+380,Savannah,4,8
+381,Pink Rose Fizz,39,8
+382,Ninotchka Cocktail,4,11
+383,Prairie Oyster,1,8
+384,Prairie Chicken,235,8
+385,Pousse L'Amour,386,8
+386,Puerto Apple,1,8
+387,Akogare,4,1
+388,Prado,192,8
+389,Port Wine Flip,192,8
+390,Port Wine Cobbler,235,8
+391,Nijinksy Blini,9,11
+392,Affinity Cocktail (whisky),4,1
+393,Plain Vermouth Cocktail,4,8
+394,Ping-Pong Cocktail,4,8
+395,Moscow Mule,135,11
+396,Phoebe Snow,4,8
+397,Affinity Cocktail,4,1
+398,Peggy Cocktail,4,8
+399,Peach Blow Fizz,39,8
+400,Peach Blossom,39,8
+401,Passion Mimosa,9,8
+402,Mocha Express,4,11
+403,Palmer Cocktail,4,8
+404,Mr. 404,4,11
+405,Mountain Cocktail,4,8
+406,Morning Glory Fizz,39,8
+407,Adderly Cocktail,4,1
+408,Fancy Brandy,4,7
+409,Montreal Gin Sour,192,8
+410,Montezuma,9,8
+411,Miss Jones,4,11
+412,Mint Gin Cocktail,4,8
+413,Mint Collins,5,8
+414,Million-Dollar Cocktail,4,8
+415,Millionaire Cocktail,4,8
+416,Academic Review,1,1
+417,Milk Punch,5,8
+418,Merry Widow Fizz,39,8
+419,May Blossom Fizz,39,8
+420,Mary Garden Cocktail,4,8
+421,19th Century,4,1
+422,Manila Fizz,39,8
+423,1626,4,1
+424,Maracuya Mosquito,5,11
+425,Madras,39,11
+426,Absinthe Cocktail,4,8
+427,Lychee Lucy,4,11
+428,The Loop,1,11
+429,Long Island Iced Tea,39,11
+430,Fallen Leaves,4,7
+431,L'italienne,4,11
+432,Rum Dubonnet,4,8
+433,Ruby Fizz,39,8
+434,Limoncello Manzanilla Marmalade Sour,4,11
+435,Royal Gin Fizz,39,8
+436,Royal Cocktail,192,8
+437,Royal Clover Club Cocktail,192,8
+438,Lights On The Plaza,4,11
+439,Rococo,4,8
+440,Rock & Rye Cooler,5,8
+441,Rock & Rye Cocktail,4,8
+442,Le Paradini,4,11
+443,Red Swizzle,5,8
+444,Lemon Drop,4,11
+445,Rebel Charge ,1,8
+446,Rattlesnake Cocktail,4,8
+447,Ramos Fizz,39,8
+448,San Francisco,4,8
+449,Sand-Martini Cocktail,4,8
+450,Sake Martini (Sakini),4,8
+451,Lemon Crush,4,11
+452,Rye Whiskey Cocktail,4,8
+453,Leaves Of Grass,1,11
+454,Widow's Dream,4,8
+455,Whiskey Flip,192,8
+456,L.A. Sunrise,457,11
+457,White Rose Cocktail,4,8
+458,White Plush,5,8
+459,White Elephant,4,8
+460,Kretchma Cocktail,4,11
+461,Whiskey Skin,462,8
+462,Whiskey Milk Punch,5,8
+463,Katana,4,11
+464,Ethel Duffy Cocktail,4,7
+465,Daiquiri,4,8
+466,Wembley Cocktail,4,8
+467,Weep-No-More Cocktail,4,8
+468,Jungle Juice,5,11
+469,Wedding Belle Cocktail,4,8
+470,Waterloo,1,8
+471,Waterbury Cocktail,4,8
+472,Washington Cocktail,4,8
+473,The Jamaican Ten Speed,4,11
+474,Twin Six Cocktail,4,8
+475,Jackie-O,4,11
+476,Tropical Heart,52,8
+477,Trois Rivieres,1,8
+478,Tovarich Cocktail,4,8
+479,Italian Screwdriver,457,11
+480,T.N.T. Cocktail No. 2,1,8
+481,T.N.T. Cocktail No. 1,4,8
+482,Ibiza,4,11
+483,Thunder,4,8
+484,Huntsman Cocktail,4,11
+485,Tequila Fizz,5,8
+486,Humpty Dumpty,4,11
+487,Tequila Cocktail,4,8
+488,Temptation Cocktail,4,8
+489,Tchoupitolas Street Guzzle,39,8
+490,Tahitian Tea,39,8
+491,Limey ,9,8
+492,Headless Horseman,5,11
+493,Love Cocktail,4,8
+494,Los Angeles Cocktail,192,8
+495,Long Island Tea,39,8
+496,Harvey Wallbanger,5,11
+497,Lime Giant,5,8
+498,Lil Naue,235,8
+499,Harrington,4,11
+500,El Profesor,1,7
+501,Leap Year Cocktail,4,8
+502,Lasky Cocktail,4,8
+503,Lady Love Fizz,4,8
+504,Handball Cooler,39,11
+505,Hyatt's Jamaican Banana,207,8
+506,H.P.W. Cocktail,4,8
+507,Hot Shot Margarita,4,8
+508,The Groupie,1,11
+509,Grape Nehi,4,11
+510,Hole-in-One Cocktai,4,8
+511,Grapefruit Gimlet Royale,4,11
+512,Hair Raiser,4,8
+513,Godmother,1,11
+514,Green Opal,4,8
+515,Green Hornet (Dry),5,8
+516,Green Fizz,39,8
+517,Godchild,4,11
+518,Grape Vodka Froth,1,8
+519,Grapefruit Nog,5,8
+520,Golden Slipper,4,8
+521,Golden Freindship,5,8
+522,Golden Frappe,5,8
+523,Glass Tower,5,11
+524,Golden Fizz,39,8
+525,Gloom Lifter,39,8
+526,Georgia Peach,5,11
+527,Georgia Mule,5,11
+528,Gentle Ben,5,11
+529,East India Cocktail No. 1,4,7
+530,General Harrison's Eggnog,5,8
+531,Gables Collins,5,11
+532,Frozen Brandy and Rum,1,8
+533,Frozen Apple,1,8
+534,Frisky Witch,1,11
+535,Froth Blower Cocktail,4,8
+536,French Martini,4,11
+537,Flatiron Martini,4,11
+538,Favourite Cocktail,4,8
+539,Electric Jam,5,11
+540,Fairy Belle Cocktail,4,8
+541,Duke Cocktail,9,8
+542,Dreamy Dorini Smoking Martini,4,11
+543,Dubonnet Highball,39,8
+544,Dubonnet Fizz,39,8
+545,Dubonnet Cocktail,4,8
+546,Doctor Cook,235,8
+547,Desert Sunrise,5,11
+548,Dillatini,4,8
+549,Devil's Cocktail,4,8
+550,Derby Fizz,39,8
+551,Cubeltini,4,11
+552,Crocodile Cooler,457,11
+553,Cosmopolitan,4,11
+554,Dream Cocktail,4,7
+555,Jean Lafitte Cocktail,4,8
+556,Japanese Fizz,39,8
+557,Citronella Cooler,5,11
+558,North Pole Cocktail,4,8
+559,The Cinquecento,4,11
+560,New Orleans Gin Fizz,39,8
+561,Napoleon,4,8
+562,Zombie,5,5
+563,Kiss the Boys Goodbye,4,8
+564,X.Y.Z. Cocktail,4,5
+565,K.G.B. Cocktail,4,8
+566,Eye-Opener,192,8
+567,Wiki Waki Woo,457,5
+568,Elk's Own Cocktail,4,8
+569,Eggnog Supreme,462,8
+570,Egg Sour,1,8
+571,White Lion Cocktail,4,8
+572,White Lily Cocktail,4,5
+573,Ice Cream Flip,192,5
+574,Outrigger,1,8
+575,Opera Cocktail,4,8
+576,Virginia Dare,4,5
+577,Opening Cocktail,4,8
+578,Queen Bee,4,8
+579,Van Vleet,1,5
+580,Zaza Cocktail,4,8
+581,The Vacation Cocktail,4,5
+582,Dolores,9,7
+583,Vesuvio,1,8
+584,Urban Anxiety,4,3
+585,Virgin,4,8
+586,Tropica Cocktail,5,5
+587,Vermouth Cassis,39,8
+588,Verboten,4,8
+589,Velvet Hammer No. 2,4,8
+590,Velvet Hammer No. 1,4,8
+591,Ulanda Cocktail,4,8
+592,Torridora Cocktail,4,5
+593,Boston Sour,192,8
+594,Three Miller Cocktail,4,5
+595,Bird-of-Paradise Fizz,39,8
+596,Biffy Cocktail,4,8
+597,Between-The-Sheets Cocktail,4,8
+598,Third-Rail Cocktail,4,5
+599,Bentley,4,8
+600,Tahiti Club,1,5
+601,Barton Special,1,8
+602,Barnaby's Buffalo Blizzard,5,8
+603,Susie Taylor,5,5
+604,Baltimore Bracer,4,8
+605,Bachelor's Bait Cocktail,4,8
+606,Bushranger,4,8
+607,Sunset at Gowanus,4,5
+608,Bulldog Highballl,39,8
+609,Bucks Fizz (Mimosa),5,8
+610,Buckjones,39,8
+611,Stormy Colada,39,5
+612,Bronx SIlver Cocktail,192,8
+613,Bronx Golden Cocktail,192,8
+614,Stone Wall,1,5
+615,Depth Bomb,1,7
+616,Stone Cocktail,4,5
+617,Almeria,4,8
+618,Aunt Jemima,619,8
+619,Spanish Town Cocktail,4,5
+620,Apricot Lady,1,8
+621,Apricot Anise Collins,5,8
+622,Apple Rum Rickey,39,8
+623,Sloppy Joe's Cocktail No. 1,4,5
+624,Applejack Punch,462,8
+625,Brandy Flip,192,8
+626,Sir Walter Cocktail,4,5
+627,Saxon Cocktail,4,5
+628,Boston Bullet,4,8
+629,Sargasso,4,5
+630,Santiago Cocktail,4,5
+631,Black Velvet,9,8
+632,Saint Lucy Bracer,4,5
+633,Applecar,4,8
+634,Apple Blow Fizz,39,8
+635,Antoine Special,235,8
+636,Ante,4,8
+637,S & V,4,5
+638,Rum Toddy (Cold),1,5
+639,Deauville Cocktail,4,7
+640,Allies Cocktail,4,8
+641,Rum Swizzle,5,5
+642,A. J.,4,8
+643,After Supper Cocktail,4,8
+644,Rum Sour,25,5
+645,Acapulco,1,8
+646,Absinthe Drip Cocktail,1,8
+647,Ambrosia,39,8
+648,Rum Screwdriver,39,5
+649,Rum Rickey,39,5
+650,Scotch Cocktail,4,8
+651,Rum Relaxer,457,5
+652,Rum Old-Fashioned,1,5
+653,Rum Martini,4,5
+654,Rum Highball,39,5
+655,Rum Fix,39,5
+656,Rum Daisy,135,5
+657,D'artagnan,9,7
+658,Rum Cooler,5,5
+659,Rum Collins,5,5
+660,Seaboabd,1,8
+661,Rum Cobbler,235,5
+662,Robson Cocktail,4,5
+663,Rio Fix,9,5
+664,Ringo Starr,1,5
+665,Restless Native,4,5
+666,Quarter Deck Cocktail,4,5
+667,Quaker's Cocktail,4,5
+668,Puerto Rican Rum Daisy,4,5
+669,Cuban Cocktail No. 2,4,7
+670,Prohibition Punch,207,5
+671,Prairie Oyster Cocktail,1,8
+672,Poker Cocktail,4,5
+673,Planter's Punch No. 2,5,5
+674,Planter's Punch No. 1,5,5
+675,Planter's Cocktail,4,5
+676,Pink Paradise,457,5
+677,Pink Creole,4,5
+678,Pineapple Fizz,39,5
+679,Pineapple Cocktail,4,5
+680,Pearl Button,5,5
+681,The Crux,4,7
+682,Paris When It Sizzles,4,5
+683,Palmetto Cocktail,4,5
+684,Paddington,4,5
+685,The Old Cuban,4,5
+686,"Oh, Gosh!",4,5
+687,Night Cap,52,5
+688,New Orleans Buck,5,5
+689,Nevada Cocktail,4,5
+690,Moonquake Shake,4,5
+691,Monkey Wrench,5,5
+692,Creme De Cafe,1,7
+693,Margarita,4,8
+694,Mojito,5,5
+695,Champagne Flamingo,9,11
+696,Thunder and Lightning Cocktail,4,8
+697,Casco Bay Lemonade,5,11
+698,Caribbean Cruise,5,11
+699,Cappuccino Cocktail,4,11
+700,Cape Codder,39,2
+701,Baltimore Bracer Cocktail,4,8
+702,Caesar,39,11
+703,Bull Shot,1,11
+704,Bullfrog,5,11
+705,Boston Gold,39,11
+706,Corpse Reviver No. 1,4,7
+707,Thanksgiving Special Cocktail,4,8
+708,Tequini Cocktail,4,8
+709,Bordeaux Cocktail,4,11
+710,Bolshoi Punch,1,11
+711,Blue Lagoon,39,11
+712,Stinger Cocktail,4,8
+713,Bloody Mary,1,11
+714,Spritzer Highball,39,8
+715,Bloody Bull,39,11
+716,The Blood Orange,4,11
+717,Black Russian,1,11
+718,Black Magic,1,11
+719,Black Cherry Chocolate,4,11
+720,Victor Collins,5,8
+721,Snowball Cocktail,4,8
+722,Violet Fizz,39,8
+723,Bikini,4,11
+724,Cold Deck Cocktail,4,7
+725,The Big Crush,4,11
+726,Bianca,4,11
+727,Bella Fragolia,1,11
+728,Beer Buster,39,11
+729,Basil 8,5,11
+730,Shamrock Cocktail,4,8
+731,Aqueduct,4,11
+732,Scotch Whisky Highball,39,8
+733,Alfie Cocktail,4,11
+734,Admiral Perry,4,11
+735,Yellow Rose Of Texas,4,2
+736,St. Patrick's Day Cocktail,5,8
+737,Purple Twister,5,8
+738,Waiting On Summer,5,2
+739,Cognac Highball,39,7
+740,Prince's Smile Cocktail,4,8
+741,Viva Villa,1,2
+742,Praire Oyster Cocktail,1,9
+743,Praire Chicken,744,8
+744,Venial Sin,4,2
+745,Vagabundo,457,2
+746,The 21st Century,4,2
+747,Pollyanna Cocktail,4,8
+748,Toreador,4,2
+749,Pink Squirrel Cocktail,4,8
+750,Pink Lady Cocktail,4,8
+751,Tijuana Taxi,39,2
+752,Tia Juanathan,39,2
+753,Phoebe Snow Cocktail,4,8
+754,Tequonic,1,2
+755,Tequini,4,2
+756,Passion Daiquiri Cocktail,4,8
+757,Parisian Blonde Cocktail,4,8
+758,Tequila Sunrise,39,2
+759,Coffee Grasshopper,1,7
+760,Tequila Straight,296,2
+761,Tequila Sour,25,2
+762,Tequila Smash,1,2
+763,Tequila Pink,4,2
+764,Tequila Old-Fashioned,1,2
+765,Rob Roy Cocktail,4,8
+766,Tequila Mockingbird,4,2
+767,Tequila Matador,9,2
+768,Tequila Manhattan,1,2
+769,T.N.T. Cocktail,4,8
+770,Thunderclap Cocktail,4,8
+771,Thunder Cocktail,4,8
+772,Tequila Collins,5,2
+773,White Lady Cocktail,4,8
+774,Tequila Canyon,5,2
+775,Chicago Cocktail,1,7
+776,Sunday Confession,5,2
+777,Strawberry Margarita,4,2
+778,Western Rose Cocktail,4,8
+779,Widow's Kiss Cocktail,4,8
+780,Spice Of Life,1,2
+781,Widow's Dream Cocktail,4,8
+782,Vodka Gypsy Cocktail,4,8
+783,South Of The Border,25,2
+784,Vodka Grasshopper Cocktail,4,8
+785,Violet Fizz Juice,39,8
+786,Smoked Margarita,1,2
+787,Sloe Tequila,1,4
+788,Queen Elizabeth Cocktail,4,8
+789,Silk Stockings,4,2
+790,Orchid Cocktail,4,8
+791,Orange Milk Fizz,39,8
+792,Orange Gin Rickey,39,8
+793,Orange Gin Highball,39,8
+794,Orange Gin Fizz,39,8
+795,Orange Gin Collins,5,8
+796,Sidewinder,5,2
+797,Orange Blossom Cocktail,4,8
+798,Shady Lady,39,2
+799,Cherry Blossom,4,7
+800,The Sfozando,4,2
+801,Napoleon Cocktail,4,8
+802,Moulin Rouge Cocktail,4,8
+803,Sea Of Cortez,4,2
+804,Satin Sheets,4,2
+805,Santana Sling,5,2
+806,Rosita,1,2
+807,Mariposa Cocktail,4,8
+808,Margarita Cocktail,4,8
+809,The Refuge,4,2
+810,Manhattan Cocktail (dry),4,8
+811,Mamie Taylor,5,8
+812,Quetzalcoatl,4,2
+813,Zero Mint,4,8
+814,Purple Pancho,4,2
+815,Midnight Express,1,5
+816,London Special Cocktail,9,8
+817,Mary Pickford Cocktail,4,5
+818,Charles Cocktail,4,7
+819,Martinique Rose,4,5
+820,Mariposa,4,5
+821,Mandeville,1,5
+822,K.C.B. Cocktail,4,8
+823,Malmaison,4,5
+824,Mai-Tai (Trader Vic Version),1,5
+825,Jersey Lightning Cocktail,4,8
+826,Lumination,9,5
+827,Jamaica Glow Cocktail,4,8
+828,Lounge Lizard,5,5
+829,Jack-in-the-Box Cocktail,4,8
+830,Irish Whisky Cocktail,4,8
+831,Look Out Below,1,5
+832,Little Princess Cocktail,4,5
+833,Little Devil Cocktail,4,5
+834,Champs Elysees Cocktail,4,7
+835,Hop Toad Cocktail ,4,8
+836,Level headed Cocktail,207,5
+837,La Vita Dulce,4,5
+838,Hole-in-One Cocktail,4,8
+839,Ko Adang,5,5
+840,Knickerbocker Special Cocktail,4,5
+841,Hair Raiser Cocktail,4,8
+842,Green Opal Cocktail,4,8
+843,Jamaican Ginger,5,5
+844,Green Dragon Cocktail,4,8
+845,Grasshopper Cocktail,4,8
+846,Jamaican Crawler,5,5
+847,Golden Slipper Cocktail,4,8
+848,Jade,4,5
+849,Jacqueline,4,5
+850,Jack Sparrow Flip,39,5
+851,Irresistible,4,5
+852,Carroll Cocktail,4,7
+853,Hush and Wonder,4,5
+854,Hurricane Leah,457,5
+855,Gimlet Cocktail,4,8
+856,Hurricane,457,5
+857,Hop Toad,4,5
+858,The Holy Roller,4,5
+859,Hemingway's Nog,4,5
+860,Flying Scotchman Cocktail,4,8
+861,Flying Grasshopper Cocktail,4,8
+862,Havana Cocktail,4,5
+863,Harvest Nectar,135,5
+864,Fancy Brandy Cocktail,4,8
+865,Fallen Angel Cocktail,4,8
+866,The Poncho,4,2
+867,Hai Karate,5,5
+868,Cara Sposa,4,7
+869,Traditional Martini (Dry),4,8
+870,Pina Agave,4,2
+871,Grande Guignol,4,5
+872,Pancho Villa,4,2
+873,Paloma (Natural),5,2
+874,Golden Friendship,5,5
+875,Paloma,5,2
+876,Pacific Sunshine,457,2
+877,Golden Eclipse,4,5
+878,Diplomat Cocktail,4,8
+879,Oldest Temptation,4,2
+880,Ginger Grapefruit Rickey,39,5
+881,Calvados Cocktail,4,7
+882,Daiquiri Cocktail,4,8
+883,The Oaxaca Old-Fashioned,1,2
+884,Cuban Special Cocktail,4,8
+885,Gaugin,1,5
+886,The Nomad South,1,2
+887,Creole Lady Cocktail,4,8
+888,No. 8,4,2
+889,Fog Cutter,5,5
+890,Mexicola,5,2
+891,Floridita No. 3,9,5
+892,Mexican Monk,4,2
+893,Floridita No. 1,4,5
+894,Mexican Madras,1,2
+895,Cadiz,1,7
+896,Chocolate Soldier Cocktail,4,8
+897,Fireman's Sour,1,5
+898,Fat Like Buddha,4,5
+899,Cherry Blossom Cocktail,4,8
+900,Fair-and-Warmer Cocktail,4,5
+901,Chelsea Sidecar Cocktail,4,8
+902,Mexican Firing Squad,39,2
+903,Mexicana,4,2
+904,El Presidente Cocktail No. 2,4,5
+905,Margarita Tequila,4,4
+906,Lillypad,4,2
+907,X. Y. Z. Cocktail,4,8
+908,La Ultima Palabra,4,2
+909,La Perla,4,2
+910,Bull's Milk,5,7
+911,La Bomba,4,2
+912,Jinx Cocktail,4,2
+913,The Interesting Cocktail,4,2
+914,Hot Pants,1,2
+915,High Plains Drifter No. 1,4,2
+916,Hairy Sunrise,5,2
+917,Guadalajara,4,2
+918,Frostbite,4,2
+919,Flower Power,4,2
+920,Cablegram Highball,39,8
+921,Cabaret Cocktail,4,8
+922,Bulla's Eye,39,7
+923,El Oso (The Bear),4,2
+924,El Nino,1,2
+925,El Molino,4,2
+926,Bucks Fizz,5,8
+927,Dirty Daisy,4,2
+928,Diablo,5,2
+929,Count Camillo's Paloma,5,2
+930,Company B,4,2
+931,Chupa Cabra,4,2
+932,Chinchona,4,2
+933,Chapala,457,2
+934,Bulldog Cocktail,4,7
+935,Boston Sidecar Cocktail,4,8
+936,Catalina Margarita,4,2
+937,Camino Del Ray,4,2
+938,Cactus Berry,4,2
+939,Bolero Cocktail,4,8
+940,Bum's Rush,5,2
+941,Brave Bull,1,2
+942,Blue Margarita,4,2
+943,Bloody Maria,1,2
+944,Pineapple Dream Cocktail,4,8
+945,Big Red Hooter,5,2
+946,Blood Bronx Cocktail,4,8
+947,Bravo,1,2
+948,Amante Picante,4,2
+949,Brunswick Street Cocktail,4,7
+950,Black Hawk Cocktail,4,8
+951,Alamo Splash,5,2
+952,Betsy Ross Cocktail,4,8
+953,Bermuda Rose Cocktail,4,8
+954,Yokahama Romance,4,6
+955,Yale Cocktail,4,6
+956,Xanthia Cocktail,4,6
+957,Woodstock,4,6
+958,Wolf's Bite,4,6
+959,Barbary Coast Cocktail,4,8
+960,The Winkle,4,6
+961,The Wink,1,6
+962,Will Rogers,4,6
+963,Brandy Vermouth Cocktail,4,7
+964,White Spider,4,6
+965,White Lady,4,6
+966,Western Rose,4,6
+967,May Blosson Fizz,39,8
+968,Wembly Cocktail,4,6
+969,Apple Pie Cocktail,4,8
+970,Water Lily,4,6
+971,Wallis Blue Cocktail,1,6
+972,Minnehaha Cocktail,4,8
+973,Wallick Cocktail,4,6
+974,Waikiki Beachcomber,4,6
+975,Vow Of Silence,4,6
