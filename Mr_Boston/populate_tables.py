@@ -2,7 +2,7 @@ from credentials import user, password, rds_host
 import pymysql
 import pandas as pd
 from boston_functions import *
-import re
+from fractions import Fraction
 import numpy as np
 from liquid import liquids
 from garnish import garnishes
@@ -277,7 +277,7 @@ def populate_cocktail_table(cocktail_df):
         category_id = cocktail_df.iloc[row, 2]
         instructions = cocktail_df.iloc[row, 3]
         print(cocktail_name)
-        sql = f"INSERT INTO Cocktails (Cocktail_Name, Glass_ID, Category_ID, Instructions) VALUES ('{cocktail_name}', '{glass_id}', '{category_id}', '{instructions}');"
+        sql = f'INSERT INTO Cocktails (Cocktail_Name, Glass_ID, Category_ID, Instructions) VALUES ("{cocktail_name}", "{glass_id}", "{category_id}", "{instructions}");'
         cursor.execute(sql)
     conn.commit()
     cursor.execute("SELECT * FROM Cocktails")
@@ -295,6 +295,7 @@ liquid_ids_list = []
 cocktail_ids = []
 liquid_ingredient_list = []
 liquid_measure_list = []
+liquid_measure_float_list = []
 cocktail_ids_list = []
 
 #connect to sql, create cursor object, and use cocktail db
@@ -318,20 +319,65 @@ conn.close()
 #for each recipe,
 for i in range(len(all_recipies)):
     #set cocktail_id
-    cocktail_id = cocktail_ids[i]
+    cocktail_id = cocktail_id_list[i]
     #find ingredient list
     ingredient_list = all_recipies[i]["recipe"]
+    #find total glass volume
+    total_glass_volume = all_recipies[i]["glass_size"]
+    #set total liquid measure to 0
+    total_liquid_measure = 0
+    
     #for each non-garnish ingredient,
     for measure, ingredient in ingredient_list:
+        measure = measure.strip()
         if measure == "add":
             pass
-        elif ingredient == "pimm's cup":
+        elif ingredient == "pimm's cup":#pimm's cup did not make it onto out liquids list
             pass
-        #add to lists
+        
         else:
+            #add to lists
             cocktail_ids_list.append(cocktail_id)
             liquid_measure_list.append(measure)
             liquid_ingredient_list.append(ingredient)
+            
+        ### CONVERTING MEASURES TO FLOAT ###
+            #split measure on spaces
+            split_measure = measure.split(" ")
+
+            #if measure is compound fraction,
+            if len(split_measure) > 2:
+                #recombine compound fraction
+                measure = split_measure[0]+" "+split_measure[1]
+                #convert to float
+                measure_float = float(sum(Fraction(s) for s in measure.split()))
+                #add to float list
+                liquid_measure_float_list.append(measure_float)
+                #add measure to drink's total measure
+                total_liquid_measure += measure_float
+            #if measure is an integer,
+            elif len(split_measure) > 1:
+                #convert to float
+                measure_float = float(sum(Fraction(s) for s in split_measure[0].split()))
+                #if unit is smaller than oz, convert measure to oz
+                if split_measure[1][:3] == "tsp":
+                    measure_float = measure_float / 6
+                elif split_measure[1][:4] == "dash":
+                    measure_float = measure_float / 32
+                elif split_measure[1][:6] == "splash":
+                    measure_float = measure_float / 5
+                #add to float list
+                liquid_measure_float_list.append(measure_float)
+                #add measure to drink's total measure
+                total_liquid_measure += measure_float
+            #if measure if fill,
+            elif split_measure[0] == "fill":
+                #calculate remaining volume
+                remaining_volume = float(total_glass_volume) - float(total_liquid_measure)
+                #set fill measure to half remaining volume
+                measure_float = float(remaining_volume / 2)
+                #add to float list
+                liquid_measure_float_list.append(measure_float)
 
 #connect to sql
 conn = pymysql.connect(rds_host, user=user, password=password, connect_timeout=50)
@@ -367,7 +413,7 @@ for ingredient in liquid_ingredient_list:
 conn.close()
 
 #create liquid ingredients df
-liquid_ingredients_df = pd.DataFrame({"cocktail_id": cocktail_ids_list, "liquid_id": liquid_ids_list, "measure": liquid_measure_list})
+liquid_ingredients_df = pd.DataFrame({"cocktail_id": cocktail_ids_list, "liquid_id": liquid_ids_list, "measure": liquid_measure_list, "measure_float": liquid_measure_float_list})
 
 def populate_liquid_instructions_table(liquid_instructions_df):
     conn = pymysql.connect(rds_host, user=user, password=password, connect_timeout=50)
@@ -377,8 +423,9 @@ def populate_liquid_instructions_table(liquid_instructions_df):
         cocktail_id = liquid_instructions_df.iloc[row, 0]
         liquid_id = liquid_instructions_df.iloc[row, 1]
         measure = liquid_instructions_df.iloc[row, 2]
+        measure_float = liquid_instructions_df.iloc[row, 3]
         print(cocktail_id, liquid_id, measure)
-        sql = f"INSERT INTO Liquid_Instuctions (Cocktail_ID, Liquid_ID, Measure) VALUES ('{cocktail_id}', '{liquid_id}', '{measure}');"
+        sql = f'INSERT INTO Liquid_Instuctions (Cocktail_ID, Liquid_ID, Measure, Measure_Float) VALUES ("{cocktail_id}", "{liquid_id}", "{measure}", "{measure_float}");'
         cursor.execute(sql)
     conn.commit()
     cursor.execute("SELECT * FROM Liquid_Instuctions")

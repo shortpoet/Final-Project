@@ -43,6 +43,7 @@ liquid_instructions_table_sql = "CREATE TABLE Liquid_Instructions ( \
                                 , Cocktail_ID INT \
                                 , Liquid_ID INT \
                                 , Measure VARCHAR(24) \
+                                , Measure_Float FLOAT \
                                 , FOREIGN KEY (Cocktail_ID) REFERENCES Cocktails(Cocktail_ID) \
                                 , FOREIGN KEY (Liquid_ID) REFERENCES Liquids(Liquid_ID) \
                                 );"
