@@ -822,7 +822,6 @@ function styleImportedSVG () {
 }
 function drawTable(endpoint, chosenParam, paramType) {
 	d3.json(endpoint).then(function(recipe_dump) {
-    console.log(recipe_dump)
     var chosenRecipes = []
     if (paramType === 'ingredient') {
       var recipeFilter = recipe_dump.filter(recipe => {

@@ -1,5 +1,3 @@
-# from flask import Flask, jsonify, request, redirect
-# from flask_cors import CORS
 from credentials_local import user, password, rds_host
 import pymysql
 
@@ -35,20 +33,22 @@ cocktail_table_sql = "CREATE TABLE Cocktails ( \
                         , Cocktail_Name VARCHAR(80) \
                         , Glass_ID INT \
                         , Category_ID INT \
+                        , Instructions VARCHAR(500) \
                         , FOREIGN KEY (Glass_ID) REFERENCES Glasses(Glass_ID) \
                         , FOREIGN KEY (Category_ID) REFERENCES Categories(Category_ID) \
                         );"
 
-liquid_instructions_table_sql = "CREATE TABLE Liquid_Instuctions ( \
+liquid_instructions_table_sql = "CREATE TABLE Liquid_Instructions ( \
                                 Liquid_Instruction_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT \
                                 , Cocktail_ID INT \
                                 , Liquid_ID INT \
                                 , Measure VARCHAR(24) \
+                                , Measure_Float FLOAT \
                                 , FOREIGN KEY (Cocktail_ID) REFERENCES Cocktails(Cocktail_ID) \
                                 , FOREIGN KEY (Liquid_ID) REFERENCES Liquids(Liquid_ID) \
                                 );"
 
-garnish_instructions_table_sql = "CREATE TABLE Garnish_Instuctions ( \
+garnish_instructions_table_sql = "CREATE TABLE Garnish_Instructions ( \
                                     Garnish_Instruction_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT \
                                     , Cocktail_ID INT \
                                     , Garnish_ID INT \
@@ -69,7 +69,7 @@ tables_to_create = [liquid_table_sql, garnish_table_sql, category_table_sql,
                     garnish_instructions_table_sql, rating_table_sql]
 
 print("connecting")
-# def create_tables():
+
 conn = pymysql.connect(rds_host, user=user, password=password, connect_timeout=50)
 cursor = conn.cursor()
 # create database
@@ -88,9 +88,7 @@ cursor.execute("SHOW TABLES;")
 tables = cursor.fetchall()
 print(tables)
 cursor.execute("SELECT * FROM Cocktails;")
-tables = cursor.fetchall()
-print(tables)
+cocktails = cursor.fetchall()
+print(cocktails)
 conn.close()
 print("success")
-
-# create_tables()
