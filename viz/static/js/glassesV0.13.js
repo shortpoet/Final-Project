@@ -826,7 +826,7 @@ function drawTable(endpoint, chosenParam, paramType) {
     if (paramType === 'ingredient') {
       var recipeFilter = recipe_dump.filter(recipe => {
         recipe['ingredients'].forEach(ingredient => {
-          if (ingredient.includes(chosenParam)) {
+          if (ingredient['Liquid_Name'].includes(chosenParam)) {
             chosenRecipes.push(recipe)
             return true;
           }
@@ -836,9 +836,19 @@ function drawTable(endpoint, chosenParam, paramType) {
     else if (paramType === 'recipe') {
       var chosenRecipes = recipe_dump.filter(datum => datum.name == chosenParam)
     }
+    function ingrColumn(ings) {
+      liqs = []
+      ings.forEach(ing => {
+        liqs.push(ing['Measure'] + ' ' + ing['Liquid_Name'])
+      })
+      return liqs
+    }
     console.log(chosenRecipes)
-		var headers = d3.keys(recipe_dump[0])
-		headers = headers.slice(9,10).concat(headers.slice(2,6))
+    var headers = d3.keys(recipe_dump[0])
+    console.log(headers)
+    headers = headers.slice(3,4).concat(headers.slice(1,2)).concat(headers.slice(12,13)).concat(headers.slice(5,7))
+    .concat(headers.slice(13,14)).concat(headers.slice(7,8))
+    console.log(headers)
 		var dataTable = d3.select('#table').append('table').attr('class', 'datatable table table-striped');
 		var header = dataTable.append('thead').selectAll('th').data(headers).enter()
 			.append('th')
@@ -850,9 +860,10 @@ function drawTable(endpoint, chosenParam, paramType) {
 		var content = tbody.selectAll('tr').data(chosenRecipes).enter()
 			.append('tr')
 			.html((data, i) => (`
-			  <td class="col_0 row_${i + 1}">${data.name}</td><td class="col_1 row_${i + 1}">${data.glass_size}</td>
-				<td class="col_2 row_${i + 1}">${data.glass_type}</td><td class="col_3 row_${i + 1}">${data.ingredients}</td>
-				<td class="col_4 row_${i + 1}">${data.instructions}</td>
+			  <td class="col_0 row_${i + 1}">${data.Cocktail_Name}</td><td class="col_1 row_${i + 1}">${data.Category_Name}</td>
+				<td class="col_2 row_${i + 1}">${data.avg_rating}</td><td class="col_3 row_${i + 1}">${data.Glass_Name}</td>
+        <td class="col_4 row_${i + 1}">${data.Glass_Size}</td><td class="col_5 row_${i + 1}">${ingrColumn(data.ingredients)}</td>
+        <td class="col_7 row_${i + 1}">${data.Instruction}</td>
 				`
 			))
 			.on('mouseover', function(d, i) {
