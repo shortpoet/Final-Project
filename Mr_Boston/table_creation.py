@@ -1,4 +1,4 @@
-from credentials_local import user, password, rds_host
+from credentials import user, password, rds_host
 import pymysql
 
 
