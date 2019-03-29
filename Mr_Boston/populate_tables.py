@@ -33,6 +33,19 @@ all_recipies, measures = get_cocktail_recipies(data, ingredient_indicies, liquid
 #set categories list
 categories = list(set(data.iloc[:, 1])) + ["AI Instant Classic"]
 
+############################
+# COCKTAIL RECIPES TO TEXT #
+############################
+with open('mr_boston_cocktails.txt', 'w') as text_file:
+    for i in range(len(all_recipies)):
+        cocktail_string = all_recipies[i]['name'] + " - "
+        cocktail_string += all_recipies[i]['glass'] + " - "
+        for measurement, ingredient in all_recipies[i]["recipe"]:
+            cocktail_string += measurement + " " + ingredient + " - "
+        cocktail_string += all_recipies[i]['instructions']
+        text_file.write(cocktail_string + "\n")
+
+
 ###################
 # POPULATE TABLES #
 ###################
