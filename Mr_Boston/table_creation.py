@@ -1,5 +1,3 @@
-# from flask import Flask, jsonify, request, redirect
-# from flask_cors import CORS
 from credentials_local import user, password, rds_host
 import pymysql
 
@@ -70,7 +68,7 @@ tables_to_create = [liquid_table_sql, garnish_table_sql, category_table_sql,
                     garnish_instructions_table_sql, rating_table_sql]
 
 print("connecting")
-# def create_tables():
+
 conn = pymysql.connect(rds_host, user=user, password=password, connect_timeout=50)
 cursor = conn.cursor()
 cursor.execute('USE cocktailproject')
@@ -86,9 +84,7 @@ cursor.execute("SHOW TABLES;")
 tables = cursor.fetchall()
 print(tables)
 cursor.execute("SELECT * FROM Cocktails;")
-tables = cursor.fetchall()
-print(tables)
+cocktails = cursor.fetchall()
+print(cocktails)
 conn.close()
 print("success")
-
-# create_tables()
