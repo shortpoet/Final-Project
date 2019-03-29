@@ -3,9 +3,11 @@ import pymysql
 import pandas as pd
 from boston_functions import *
 from fractions import Fraction
+import re
 import numpy as np
 from liquid import liquids
 from garnish import garnishes
+import random
 
 #import mr boston cocktail database
 data = pd.read_csv("./mr-boston-all-glasses.csv")
@@ -244,6 +246,7 @@ cursor.execute('USE cocktailproject')
 for i in range(len(all_recipies)):
     #find instructions and append to instructions list
     instructions = all_recipies[i]["instructions"]
+    instructions = re.sub(r'["]', '\'', instructions)
     instructions_list.append(instructions)
     
     #find cocktail category
@@ -277,7 +280,7 @@ def populate_cocktail_table(cocktail_df):
         category_id = cocktail_df.iloc[row, 2]
         instructions = cocktail_df.iloc[row, 3]
         print(cocktail_name)
-        sql = f"INSERT INTO Cocktails (Cocktail_Name, Glass_ID, Category_ID, Instructions) VALUES ('{cocktail_name}', '{glass_id}', '{category_id}', '{instructions}');"
+        sql = f'INSERT INTO Cocktails (Cocktail_Name, Glass_ID, Category_ID, Instructions) VALUES ("{cocktail_name}", "{glass_id}", "{category_id}", "{instructions}");'
         cursor.execute(sql)
     conn.commit()
     cursor.execute("SELECT * FROM Cocktails")
@@ -319,7 +322,7 @@ conn.close()
 #for each recipe,
 for i in range(len(all_recipies)):
     #set cocktail_id
-    cocktail_id = cocktail_id_list[i]
+    cocktail_id = cocktail_ids[i]
     #find ingredient list
     ingredient_list = all_recipies[i]["recipe"]
     #find total glass volume
@@ -378,6 +381,9 @@ for i in range(len(all_recipies)):
                 measure_float = float(remaining_volume / 2)
                 #add to float list
                 liquid_measure_float_list.append(measure_float)
+            else:
+                measure_float = float(0)
+                liquid_measure_float_list.append(measure_float)
 
 #connect to sql
 conn = pymysql.connect(rds_host, user=user, password=password, connect_timeout=50)
@@ -425,10 +431,10 @@ def populate_liquid_instructions_table(liquid_instructions_df):
         measure = liquid_instructions_df.iloc[row, 2]
         measure_float = liquid_instructions_df.iloc[row, 3]
         print(cocktail_id, liquid_id, measure)
-        sql = f'INSERT INTO Liquid_Instuctions (Cocktail_ID, Liquid_ID, Measure, Measure_Float) VALUES ("{cocktail_id}", "{liquid_id}", "{measure}", "{measure_float}");'
+        sql = f'INSERT INTO Liquid_Instructions (Cocktail_ID, Liquid_ID, Measure, Measure_Float) VALUES ("{cocktail_id}", "{liquid_id}", "{measure}", "{measure_float}");'
         cursor.execute(sql)
     conn.commit()
-    cursor.execute("SELECT * FROM Liquid_Instuctions")
+    cursor.execute("SELECT * FROM Liquid_Instructions")
     data = cursor.fetchall()
     print("++++++Liquid Ingredients Table Populated+++++++++")
     conn.close()
@@ -486,10 +492,10 @@ def populate_garnish_instructions_table(garnish_instructions_df):
         cocktail_id = garnish_instructions_df.iloc[row, 0]
         garnish_id = garnish_instructions_df.iloc[row, 1]
         print(cocktail_id, garnish_id)
-        sql = f"INSERT INTO Garnish_Instuctions (Cocktail_ID, Garnish_ID) VALUES ('{cocktail_id}', '{garnish_id}');"
+        sql = f"INSERT INTO Garnish_Instructions (Cocktail_ID, Garnish_ID) VALUES ('{cocktail_id}', '{garnish_id}');"
         cursor.execute(sql)
     conn.commit()
-    cursor.execute("SELECT * FROM Garnish_Instuctions")
+    cursor.execute("SELECT * FROM Garnish_Instructions")
     data = cursor.fetchall()
     print("++++++Garnish Ingredients Table Populated+++++++++")
     conn.close()
