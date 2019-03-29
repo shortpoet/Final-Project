@@ -277,7 +277,7 @@ def populate_cocktail_table(cocktail_df):
         category_id = cocktail_df.iloc[row, 2]
         instructions = cocktail_df.iloc[row, 3]
         print(cocktail_name)
-        sql = f'INSERT INTO Cocktails (Cocktail_Name, Glass_ID, Category_ID, Instructions) VALUES ("{cocktail_name}", "{glass_id}", "{category_id}", "{instructions}");'
+        sql = f"INSERT INTO Cocktails (Cocktail_Name, Glass_ID, Category_ID, Instructions) VALUES ('{cocktail_name}', '{glass_id}', '{category_id}', '{instructions}');"
         cursor.execute(sql)
     conn.commit()
     cursor.execute("SELECT * FROM Cocktails")
