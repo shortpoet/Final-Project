@@ -40,7 +40,7 @@ cocktail_table_sql = "CREATE TABLE Cocktails ( \
                         , FOREIGN KEY (Category_ID) REFERENCES Categories(Category_ID) \
                         );"
 
-liquid_instructions_table_sql = "CREATE TABLE Liquid_Instuctions ( \
+liquid_instructions_table_sql = "CREATE TABLE Liquid_Instructions ( \
                                 Liquid_Instruction_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT \
                                 , Cocktail_ID INT \
                                 , Liquid_ID INT \
@@ -49,7 +49,7 @@ liquid_instructions_table_sql = "CREATE TABLE Liquid_Instuctions ( \
                                 , FOREIGN KEY (Liquid_ID) REFERENCES Liquids(Liquid_ID) \
                                 );"
 
-garnish_instructions_table_sql = "CREATE TABLE Garnish_Instuctions ( \
+garnish_instructions_table_sql = "CREATE TABLE Garnish_Instructions ( \
                                     Garnish_Instruction_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT \
                                     , Cocktail_ID INT \
                                     , Garnish_ID INT \
