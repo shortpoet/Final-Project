@@ -39,7 +39,7 @@ categories = list(set(data.iloc[:, 1])) + ["AI Instant Classic"]
 ### LIQUID TABLE ###
 ####################
 #import colors for liquids
-liquid_colors = pd.read_csv("./LIquid_Colors_Final.csv")
+liquid_colors = pd.read_csv("./Liquid_Colors_Final.csv")
 
 def populate_liquid_table(liquid_df):
     conn = pymysql.connect(rds_host, user=user, password=password, connect_timeout=50)
