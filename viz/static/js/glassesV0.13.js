@@ -247,8 +247,10 @@ function drawGlass(cocktail_endpoint, chosenRecipe) {
       var maskHeight = recipe[0]['Mask_Height']
       var ings = recipe[0]['Ingredients'].map(x=>x.Liquid_Name)
       var ingVals = recipe[0]['Ingredients'].map(x=>x.Measure_Float)
+      var ingCols = recipe[0]['Ingredients'].map(x=>x.Color)
       console.log(maskTopMargin, maskHeight, ings, ingVals)
       var volume = recipe[0]['Total_Volume']
+      console.log(volume)
       var name = recipe[0]['Cocktail_Name']
       var avg_rating = recipe[0]['Average_Rating']
       
@@ -377,7 +379,7 @@ function drawGlass(cocktail_endpoint, chosenRecipe) {
         .attr('id', 'ingrRectGroup')
 
       var y = 0
-      var ingrRect = ingrRectGroup.selectAll('rect').data(recipe)
+      var ingrRect = ingrRectGroup.selectAll('rect').data(ingVals)
         .enter()
         .append('rect')
         .attr('x', 0)
@@ -393,7 +395,7 @@ function drawGlass(cocktail_endpoint, chosenRecipe) {
         })
         .attr('width', 60)
         .attr('clip-path', 'url(#clip)') 
-        .style('fill', (d,i) => `rgb(100, ${(i+1)*60}, 100)`)
+        .style('fill', (d,i) => ingCols[i])
 
       var ingrTextGroup = ingrRectGroup.append('g')
         .attr('id', 'ingrTextGroup')

@@ -274,9 +274,9 @@ function drawGlass(endpoint, chosenRecipe) {
         .attr('height', (d,i) => {
           // console.log(y)
           this_arr = ingVals.slice(0, ingVals.length + y)
-          // console.log(this_arr)
+          console.log(this_arr)
           this_arr = this_arr.map(x=>x/volume*maskHeight)
-          // console.log(this_arr)
+          console.log(this_arr)
           y -= 1
           return this_arr.reduce((a,b)=> a + b, 0)
         })

@@ -31,6 +31,7 @@ def cocktails():
         for recipe in cocktail_db_response:
             # print(recipe)
             ratings = []
+            print(recipe['rating'])
             for k, v in recipe['rating'].items():
                 if k == 'rating':
                     ratings.append(int(v))
@@ -73,7 +74,7 @@ def table():
 
 @app.route("/glasses")
 def glasses():
-    return render_template("glasses.html")
+    return render_template("glasses_old.html")
 
 
 
@@ -83,5 +84,5 @@ def glasses():
 #     return redirect(url_for("https://mars.nasa.gov/mer/mission/status_spirit.html#recient"))
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port='5000', debug=True)
+    app.run(host='127.0.0.1', port='8000', debug=True)
 

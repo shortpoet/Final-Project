@@ -207,9 +207,12 @@ def cocktails():
             for ingredient in cocktail['Ingredients']:
                 for k, v in ingredient.items():
                     if k == 'Measure_Float':
-                        measures.append(int(v))
-                total = sum(measures)
-                cocktail['Total_Volume'] = total
+                        print(v)
+                        measures.append(float(v))
+            total = sum(measures)
+            print(cocktail['Cocktail_Name'], ingredient['Measure_Float'], measures, total)
+
+            cocktail['Total_Volume'] = total
         
         for cocktail in cocktails:
             ratings = []
