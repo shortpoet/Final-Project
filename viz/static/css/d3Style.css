@@ -13,9 +13,9 @@
   fill: #d8d8d8;
 }
 
-ul {
-  padding: 10 0 0 0;
-}
+/* ul {
+  padding: 10px 0px 0px 0px;
+} */
 
 /* .stars:hover .star polygon {
   fill: #ffd055 !important;

@@ -9,6 +9,10 @@ from liquid import liquids
 from garnish import garnishes
 import random
 
+#set options so data isn't TRUNCATED!! 
+pd.set_option('display.max_colwidth', -1)
+pd.set_option('display.max_columns', None)  
+
 #import mr boston cocktail database
 data = pd.read_csv("./mr-boston-all-glasses.csv")
 #locate data
@@ -127,7 +131,7 @@ glass_df = pd.DataFrame({"cocktail_name": names, "glass_name": glasses, "glass_s
 
 ### GLASS SVG DATA ###
 #import glass svg data
-svg_data = pd.read_csv("../glasses.csv")
+svg_data = pd.read_csv("../the_glasses.csv")
 
 #set empty lists for svg data
 masks = []

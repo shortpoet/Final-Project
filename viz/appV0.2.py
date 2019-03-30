@@ -97,8 +97,8 @@ def cocktails():
             this_gl['Glass_ID_Glasses'] = i[0]
             this_gl['Glass_Name'] = i[1]
             this_gl['Glass_Size'] = i[2]
-            this_gl['Mask'] = i[3]
-            this_gl['Path'] = i[4]
+            this_gl['Mask'] = i[3][1:]
+            this_gl['Path'] = i[4][1:]
             this_gl['Mask_Height'] = i[5]
             this_gl['Mask_Top_Margin'] = i[6]
             glasses.append(this_gl)
@@ -165,8 +165,8 @@ def cocktails():
 
         for glass in glasses:
             for cock in cocktails:
-                cock['ingredients'] = []
-                cock['ratings'] = []
+                cock['Ingredients'] = []
+                cock['Ratings'] = []
                 if glass['Glass_ID_Glasses'] == cock['Glass_ID_Cocktails']:
                     cock['Glass_Name']  = glass['Glass_Name'] 
                     cock['Glass_Size'] = glass['Glass_Size']
@@ -191,7 +191,7 @@ def cocktails():
                     this_ing['Measure_Float'] = liq_ins['Measure_Float']
                     this_ing['Liquid_Name'] = liq_ins['Liquid_Name']
                     this_ing['Color'] = liq_ins['Color']
-                    cock['ingredients'].append(this_ing)
+                    cock['Ingredients'].append(this_ing)
 
         for rat in ratings:
             for cock in cocktails:
@@ -199,17 +199,26 @@ def cocktails():
                     this_rat = {}
                     this_rat['Rating_ID'] = rat['Rating_ID']
                     this_rat['Rating'] = rat['Rating']
-                    cock['ratings'].append(this_rat)
+                    cock['Ratings'].append(this_rat)
             
         
         for cocktail in cocktails:
+            measures = []
+            for ingredient in cocktail['Ingredients']:
+                for k, v in ingredient.items():
+                    if k == 'Measure_Float':
+                        measures.append(int(v))
+                total = sum(measures)
+                cocktail['Total_Volume'] = total
+        
+        for cocktail in cocktails:
             ratings = []
-            for rating in cocktail['ratings']:
+            for rating in cocktail['Ratings']:
                 for k, v in rating.items():
                     if k == 'Rating':
                         ratings.append(int(v))
-                average = round(sum(ratings)/len(ratings))
-                cocktail['avg_rating'] = average
+            average = round(sum(ratings)/len(ratings))
+            cocktail['Average_Rating'] = average
 
         return jsonify(cocktails)
 
@@ -230,15 +239,21 @@ def cocktails():
         # mongo.db.recipe_dump.update_one({'name': recipe}, {"$set": {'rating': this_rating}}, upsert=True)
         return redirect(url_for("glasses"))
 
-# @app.route("/liquid")
-# def svgs():
+@app.route("/liquids")
+def liquids():
 
-#     liquids_db_response = mongo.db.liquid_colors.find({}, {'_id': False})
-#     liquids = []
-#     for liquid in liquids_db_response:
-#         liquids.append(liquid)
-#     # print(recipes)
-#     return jsonify(liquids)
+    conn = mysql.connect()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM Liquids")
+    liquids_table = cursor.fetchall()
+    liquids = []
+    for i in liquids_table:
+        this_liq = {}
+        this_liq['Liquid_ID_Liquids'] = i[0]
+        this_liq['Liquid_Name'] = i[1]
+        this_liq['Color'] = i[2]
+        liquids.append(this_liq)
+    return jsonify(liquids)
 
 @app.route("/table")
 def table():

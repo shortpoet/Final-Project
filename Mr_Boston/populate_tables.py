@@ -127,7 +127,7 @@ glass_df = pd.DataFrame({"cocktail_name": names, "glass_name": glasses, "glass_s
 
 ### GLASS SVG DATA ###
 #import glass svg data
-svg_data = pd.read_csv("../glasses.csv")
+svg_data = pd.read_csv("../the_glasses.csv")
 
 #set empty lists for svg data
 masks = []
