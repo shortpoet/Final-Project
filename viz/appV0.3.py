@@ -166,11 +166,12 @@ def cocktails():
                 # print(gi['Cocktail_ID_Garnish_Instructions'])
         print(garnish_instructions[0])
 
-        for gi in garnish_instructions:
+        
+        for cock in cocktails:
+            for gi in garnish_instructions:
             # print(gi['Garnish_Name'])
-            for cock in cocktails:
                 # print(gi, cock)
-                if gi['Cocktail_ID_Garnish_Instructions'] == cock['Cocktail_ID_Cocktails']:
+                if cock['Cocktail_ID_Cocktails'] == gi['Cocktail_ID_Garnish_Instructions']:
                     cock['Garnish_Instruction_ID'] = gi['Garnish_Instruction_ID']
                     cock['Garnish_ID_Garnish_Instructions'] = gi['Garnish_ID_Garnish_Instructions']
                     cock['Garnish_Name'] = gi['Garnish_Name']
