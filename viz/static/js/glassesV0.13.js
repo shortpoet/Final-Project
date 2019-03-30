@@ -247,7 +247,7 @@ function drawGlass(cocktail_endpoint, chosenRecipe) {
       var maskHeight = recipe[0]['Mask_Height']
       var ings = recipe[0]['Ingredients'].map(x=>x.Liquid_Name)
       var ingVals = recipe[0]['Ingredients'].map(x=>x.Measure_Float)
-      var ingCols = recipe[0]['Ingredients'].map(x=>x.Color)
+      var ingCols = recipe[0]['Ingredients'].map(x=>x.Color).reverse()
       console.log(maskTopMargin, maskHeight, ings, ingVals)
       var volume = recipe[0]['Total_Volume']
       console.log(volume)
