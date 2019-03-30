@@ -238,7 +238,10 @@ def cocktails():
                 for k, v in rating.items():
                     if k == 'Rating':
                         ratings.append(int(v))
-            average = round(sum(ratings)/len(ratings))
+            try:
+                average = round(sum(ratings)/len(ratings))
+            except:
+                average = 0
             cocktail['Average_Rating'] = average
         
         return jsonify(cocktails)

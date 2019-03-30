@@ -37,6 +37,8 @@ function drawInput(cocktail_endpoint) {
       var ingredientSet = new Set(ingredientNames);
       var ingredientArr = [...ingredientSet]
       var ingredientSorted = ingredientArr.sort((a,b) => a > b ? 1 : a === b ? 0 : -1);
+      var cats = ['Whiskies', 'Vodka', 'Rum - Daiquiris', 'Shooters', 'Tequila', 'Brandy', 'Cocktail Classics', 'Non-alcoholic Drinks', 'Cordials and Liqueurs', 'Gin', 'Rum', 'AI Instant Classic']
+      var catsSorted = cats.sort((a,b) => a > b ? 1 : a === b ? 0 : -1)
       // console.log(ingredientSorted)
       var recSearchBox = d3.select('#recipesSearch').append('div').classed('form-group', true).append('label')
         .attr('for', 'recipeSearch')
@@ -89,6 +91,27 @@ function drawInput(cocktail_endpoint) {
           var chosenIngred = document.getElementById('ingredSearch').value
           console.log(chosenIngred)
           drawTable(cocktail_endpoint, chosenIngred, 'ingredient')
+        })
+
+      var catSearchBox = d3.select('#catSearch').append('div').classed('form-group', true).append('label')
+        .attr('for', 'catSearch')
+        .text('Search for Category')
+      var ingSearchInput = ingSearchBox.append('input').classed('form-control', true)
+        .attr('id', 'categSearch')
+        .attr('type', 'text')
+        .attr('placeholder', 'Search for Category')
+        .attr('aria-label', 'Search for Category (autocomplete)')
+      autocomplete(document.getElementById('categSearch'), catsSorted);
+      var ingSubmit = ingSearchBox.append('button')
+        .attr('type', 'submit')
+        .attr('class', 'btn btn-default')
+        .attr('id', 'submitCatSearch')
+        .text('Search')
+        .on('click', function(d, i){
+          d3.select('table').remove()
+          var chosenCateg = document.getElementById('categSearch').value
+          console.log(chosenIngred)
+          drawTable(cocktail_endpoint, chosenCateg, 'category')
         })
 
       var generate = d3.select('#generate').append('button')
@@ -850,6 +873,9 @@ function drawTable(cocktail_endpoint, chosenParam, paramType) {
     }
     else if (paramType === 'recipe') {
       var chosenRecipes = recipe_dump.filter(datum => datum.Cocktail_Name == chosenParam)
+    }
+    else if (paramType === 'category') {
+      var chosenRecipes = recipe_dump.filter(datum => datum.Category_Name == chosenParam)
     }
     function ingrColumn(ings) {
       liqs = []
